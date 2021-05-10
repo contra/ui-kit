@@ -9,7 +9,6 @@
 <!-- CI Status Badge here. -->
 
 <h6 align="center">A React component library implementing Contra's Design System.</h6>
-<h6 align="center"><a href="https://github.com/contrawork/ui-kit/tree/master">Version 2 API and Documentation</a></h6>
 
 <!--<p align="center">
   <a href="https://uikit.contra.design">
