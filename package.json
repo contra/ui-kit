@@ -1,0 +1,12 @@
+{
+  "name": "@contrawork/ui-kit",
+  "version": "0.1.0",
+  "description": "A React component library implementing Contra's Design System.",
+  "main": "index.js",
+  "repository": "git@github.com:contrawork/ui-kit.git",
+  "author": "Contra Engineering Team <engineering@contra.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
