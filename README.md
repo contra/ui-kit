@@ -1,5 +1,5 @@
 <!--<p align="center">
-  <a href="https://uikit.contra.design">
+  <a href="https://uikit.contra.com">
     <img width="250px" src="docs/static/uikit.svg">
   </a>
 </p>-->
@@ -11,7 +11,7 @@
 <h6 align="center">A React component library implementing Contra's Design System.</h6>
 
 <!--<p align="center">
-  <a href="https://uikit.contra.design">
+  <a href="https://uikit.contra.com">
     <img width="500px" src="docs/static/showcase.png">
   </a>
 </p>-->
@@ -35,7 +35,7 @@ yarn add @contrawork/ui-kit
 
 ## Docs
 
-To read the documentation, please visit [uikit.contra.design](https://uikit.contra.design).
+To read the documentation, please visit [uikit.contra.com](https://uikit.contra.com).
 
 ## Contributing
 
