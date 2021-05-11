@@ -1,12 +1,42 @@
 {
   "name": "@contrawork/ui-kit",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A React component library implementing Contra's Design System.",
-  "main": "index.js",
-  "repository": "git@github.com:contrawork/ui-kit.git",
+  "repository": "https://github.com/contrawork/ui-kit",
   "author": "Contra Engineering Team <engineering@contra.com>",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "contra",
+    "react",
+    "ui",
+    "uikit"
+  ],
+  "scripts": {
+    "check:package": "yarn package-check",
+    "check:tsc": "yarn tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@skypack/package-check": "^0.2.2",
+    "eslint": "^7.26.0",
+    "eslint-config-canonical": "^26.2.3",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.2.4"
   }
 }
