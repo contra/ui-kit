@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNodeColorStyle = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeColorKey = exports.isRectangleNode = exports.filterStyleMetadata = exports.getTeamStyles = void 0;
+exports.getNodeColorStyle = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeColorKey = exports.isRectangleNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.handleFigmaAxiosClientError = void 0;
 const tslib_1 = require("tslib");
 const camelcase_1 = tslib_1.__importDefault(require("camelcase"));
 const lodash_1 = require("lodash");
 const handleFigmaAxiosClientError = (error) => {
     throw new Error(error.message);
 };
+exports.handleFigmaAxiosClientError = handleFigmaAxiosClientError;
 const getTeamStyles = async (client, teamId) => {
     const styles = [];
     let hasMoreStyles = true;
@@ -15,6 +16,7 @@ const getTeamStyles = async (client, teamId) => {
         try {
             const teamStyles = await client.teamStyles(teamId, {
                 cursor: after ? { after } : undefined,
+                page_size: 100,
             });
             const { meta } = teamStyles.data;
             // @ts-expect-error - typing is incorrect see https://github.com/jongold/figma-js/pull/51
@@ -31,7 +33,8 @@ const getTeamStyles = async (client, teamId) => {
             }
         }
         catch (error) {
-            handleFigmaAxiosClientError(error);
+            exports.handleFigmaAxiosClientError(error);
+            break;
         }
     }
     return styles;

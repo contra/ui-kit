@@ -9,9 +9,9 @@ import type {
   StyleType,
 } from 'figma-js';
 import { set } from 'lodash';
-import type { Colors } from 'src/types';
+import type { Colors } from '../types';
 
-const handleFigmaAxiosClientError = (error: AxiosError) => {
+export const handleFigmaAxiosClientError = (error: AxiosError) => {
   throw new Error(error.message);
 };
 
@@ -28,6 +28,7 @@ export const getTeamStyles = async (
     try {
       const teamStyles = await client.teamStyles(teamId, {
         cursor: after ? { after } : undefined,
+        page_size: 100,
       });
 
       const { meta } = teamStyles.data;
@@ -46,6 +47,7 @@ export const getTeamStyles = async (
       }
     } catch (error) {
       handleFigmaAxiosClientError(error);
+      break;
     }
   }
 
