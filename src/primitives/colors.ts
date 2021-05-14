@@ -1,0 +1,60 @@
+/* Generated file. Do not update manually! */
+export const colors = {
+  alert: {
+    error: '#e06050',
+    informational: '#5b9be0',
+    success: '#66ad5a',
+    warning: '#e5973c',
+  },
+  brand: {
+    black: '#131313',
+    blue: '#6ca3e0',
+    green: '#d2d943',
+    lightGray: '#f7f7f7',
+    orange: '#ff9e31',
+    purple: '#8f6fdb',
+    salmon: '#f2a28a',
+    watermelon: '#ff5a5e',
+    white: '#ffffff',
+    yellow: '#f2c94c',
+  },
+  gray: {
+    gray10: '#f7f7f7',
+    gray20: '#eeeeee',
+    gray30: '#e3e3e3',
+    gray40: '#d1d1d1',
+    gray50: '#acacac',
+    gray60: '#8b8b8b',
+    gray70: '#646464',
+    gray80: '#515151',
+    gray90: '#333333',
+  },
+  social: {
+    invision: '#dc395f',
+    react: '#53c1de',
+    twitter: '#4aa1eb',
+  },
+  ui: {
+    black: {
+      disabled: 'rgba(19,19,19,0.4)',
+      highEmphasis: '#131313',
+      mediumEmphasis: 'rgba(19,19,19,0.67)',
+    },
+    error: {
+      focus: '#ce0e19',
+      regular: '#e90f1c',
+    },
+    filterGreen: '#cdedc7',
+    inputBackground: 'rgba(242,242,242,0.4)',
+    selected: '#dfeaf9',
+  },
+  yellow: {
+    yellow10: '#fdf6e0',
+    yellow20: '#fae7b1',
+    yellow30: '#f6d77f',
+    yellow40: '#f2c94c',
+    yellow50: '#f0bc27',
+    yellow60: '#edb104',
+    yellow70: '#eda400',
+  },
+};
