@@ -3,6 +3,7 @@
     "canonical",
     "canonical/react",
     "canonical/typescript",
+    "canonical/jest",
     "prettier"
   ],
   "parserOptions": {
