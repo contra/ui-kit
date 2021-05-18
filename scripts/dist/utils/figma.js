@@ -1,9 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNodeColorStyle = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeColorKey = exports.isRectangleNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.handleFigmaAxiosClientError = void 0;
+exports.getNodeTextStyle = exports.getNodeColorStyle = exports.getNodeText = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeStyleKey = exports.isTextNode = exports.isRectangleNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.handleFigmaAxiosClientError = void 0;
 const tslib_1 = require("tslib");
 const camelcase_1 = tslib_1.__importDefault(require("camelcase"));
 const lodash_1 = require("lodash");
+/**
+ * This is used to map `fontFamily` values from Figma TextStyle's to
+ * CSS vars so we can cut down on the amount of unnecessary bytes.
+ *
+ * If generating text styles results in an error about unknown font family
+ * we either need to add it to this map, or consult the design team and verify
+ * if we are shipping another font family stack.
+ */
+const FONT_FAMILY_MAP = {
+    'IBM Plex Mono': 'var(--font-family-mono)',
+    // Since "Inter" is our base font family and should be set on <body>, no need to explicitly
+    // set it in our CSS code per text style.
+    Inter: null,
+};
 const handleFigmaAxiosClientError = (error) => {
     throw new Error(error.message);
 };
@@ -51,7 +65,13 @@ const isRectangleNode = (node) => {
     return false;
 };
 exports.isRectangleNode = isRectangleNode;
-const normalizeColorKey = (key) => {
+const isTextNode = (node) => {
+    if (node && node.type === 'TEXT')
+        return true;
+    return false;
+};
+exports.isTextNode = isTextNode;
+const normalizeStyleKey = (key) => {
     return key.split('/').map((part, index) => {
         const name = camelcase_1.default(part.toLowerCase());
         if (/^\d/.test(name)) {
@@ -60,7 +80,7 @@ const normalizeColorKey = (key) => {
         return name;
     });
 };
-exports.normalizeColorKey = normalizeColorKey;
+exports.normalizeStyleKey = normalizeStyleKey;
 const convertRGBValue = (value) => {
     return Number((value * 255).toFixed(0));
 };
@@ -88,6 +108,15 @@ const getPaintColorValue = (color, opacity) => {
     return `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
 };
 exports.getPaintColorValue = getPaintColorValue;
+const isFontFamilyInMap = (fontFamily) => {
+    return FONT_FAMILY_MAP.hasOwnProperty(fontFamily);
+};
+const mapFigmaFontFamilyToCSSVariable = (fontFamily) => {
+    if (isFontFamilyInMap(fontFamily)) {
+        return FONT_FAMILY_MAP[fontFamily];
+    }
+    throw new Error(`Unsupported font family '${fontFamily}'. Does this need added to the map or updated in Figma?`);
+};
 const getNodeColor = (node) => {
     const { fills } = node;
     const paint = fills[0];
@@ -98,8 +127,39 @@ const getNodeColor = (node) => {
     return null;
 };
 exports.getNodeColor = getNodeColor;
+const getNodeText = (node) => {
+    const { fontFamily, fontSize, fontWeight, italic, letterSpacing, lineHeightPercentFontSize, textCase, } = node.style;
+    const mappedFontFamily = mapFigmaFontFamilyToCSSVariable(fontFamily);
+    const textStyle = {
+        // TODO: Maybe we want to REM this?
+        fontSize: `${fontSize}px`,
+        fontWeight: fontWeight.toString(),
+        lineHeight: lineHeightPercentFontSize
+            ? Number((lineHeightPercentFontSize * 0.01).toFixed(3)).toString()
+            : '1',
+    };
+    if (mappedFontFamily) {
+        textStyle.fontFamily = mappedFontFamily;
+    }
+    if (letterSpacing) {
+        textStyle.letterSpacing = `${Number(letterSpacing.toFixed(3))}px`;
+    }
+    if (italic) {
+        textStyle.fontStyle = 'italic';
+    }
+    if (textCase) {
+        if (textCase === 'LOWER') {
+            textStyle.textTransform = 'lowercase';
+        }
+        else if (textCase === 'UPPER') {
+            textStyle.textTransform = 'uppercase';
+        }
+    }
+    return textStyle;
+};
+exports.getNodeText = getNodeText;
 const getNodeColorStyle = (node, colors) => {
-    const normalizedKeys = exports.normalizeColorKey(node.name);
+    const normalizedKeys = exports.normalizeStyleKey(node.name);
     const colorValue = exports.getNodeColor(node);
     if (colorValue) {
         return lodash_1.set(colors, normalizedKeys, colorValue);
@@ -107,3 +167,9 @@ const getNodeColorStyle = (node, colors) => {
     return colors;
 };
 exports.getNodeColorStyle = getNodeColorStyle;
+const getNodeTextStyle = (node, textStyles) => {
+    const normalizedKeys = exports.normalizeStyleKey(node.name);
+    const textValue = exports.getNodeText(node);
+    return lodash_1.set(textStyles, normalizedKeys, textValue);
+};
+exports.getNodeTextStyle = getNodeTextStyle;

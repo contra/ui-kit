@@ -14,7 +14,7 @@ const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
 const TEAM_ID = '752659572481085163';
 const FILE_ID = 'L8Te5meCiyl4s3qkbYLpYN';
 const OUTPUT_DIR = '../../src/primitives/';
-const FILE_NAME = 'colors.ts';
+const FILE_NAME = 'textStyles.ts';
 const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
 (async () => {
     const client = Figma.Client({
@@ -26,9 +26,9 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
         // eslint-disable-next-line no-console
         console.log('💅 Fetching team styles');
         const teamStyles = await figma_1.getTeamStyles(client, TEAM_ID);
-        const colorStyles = teamStyles.filter(figma_1.filterStyleMetadata('FILL', FILE_ID));
+        const filteredTextStyles = teamStyles.filter(figma_1.filterStyleMetadata('TEXT', FILE_ID));
         const files = new Map();
-        colorStyles
+        filteredTextStyles
             .sort((a, b) => {
             return a.name.localeCompare(b.name);
         })
@@ -38,37 +38,37 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
                 style,
             ]);
         });
-        let colors = {};
+        let textStyles = {};
         // Get color styles out of team styles.
         // TODO: Replace with better logger.
         // eslint-disable-next-line no-console
-        console.log('🌈 Getting team color styles');
+        console.log('🔠 Getting team text styles');
         for (const [fileId, styleNodes] of files) {
             const ids = styleNodes.map((style) => style.node_id);
             const fileNodes = await client.fileNodes(fileId, { ids });
-            const colorNodes = Object.values(fileNodes.data.nodes)
+            const nodes = Object.values(fileNodes.data.nodes)
                 .map((node) => node?.document)
-                .filter(figma_1.isRectangleNode);
-            for (const node of colorNodes) {
-                colors = figma_1.getNodeColorStyle(node, colors);
+                .filter(figma_1.isTextNode);
+            for (const node of nodes) {
+                textStyles = figma_1.getNodeTextStyle(node, textStyles);
             }
         }
         // Fetch team styles
         // TODO: Replace with better logger.
         // eslint-disable-next-line no-console
-        console.log(`💾 Saving colors to ${FILE_NAME}`);
+        console.log(`💾 Saving text styles to ${FILE_NAME}`);
         fs.writeFileSync(OUTPUT_FILE, prettier_1.default.format(util.formatWithOptions({ compact: false }, `/* eslint-disable unicorn/no-abusive-eslint-disable */
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /* eslint-disable */
 
 /* Generated file. Do not update manually! */      
-export const colors = %o;`, colors), {
+export const textStyles = %o;`, textStyles), {
             parser: 'typescript',
             singleQuote: true,
         }), 'utf-8');
         // TODO: Replace with better logger.
         // eslint-disable-next-line no-console
-        console.log('✅ Color file generated!');
+        console.log('✅ Text styles file generated!');
         process.exit(0);
     }
     catch (error) {
