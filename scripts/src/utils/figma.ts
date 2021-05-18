@@ -7,9 +7,25 @@ import type {
   Node,
   Rectangle,
   StyleType,
+  Text,
 } from 'figma-js';
 import { set } from 'lodash';
-import type { Colors } from '../types';
+import type { Colors, TextStyle, TextStyles } from '../types';
+
+/**
+ * This is used to map `fontFamily` values from Figma `TextStyle`'s to
+ * CSS vars so we can cut down on the amount of unnecessary bytes.
+ *
+ * If generating text styles results in an error about unknown font family
+ * we either need to add it to this map, or consult the design team and verify
+ * if we are shipping another font family stack.
+ */
+const FONT_FAMILY_MAP = {
+  'IBM Plex Mono': 'var(--fonts-mono)',
+  // Since "Inter" is our base font family and should be set on <body>, no need to explicitly
+  // set it in our CSS code per text style.
+  Inter: null,
+};
 
 export const handleFigmaAxiosClientError = (error: AxiosError) => {
   throw new Error(error.message);
@@ -69,7 +85,13 @@ export const isRectangleNode = (
   return false;
 };
 
-export const normalizeColorKey = (key: string): string[] => {
+export const isTextNode = (node: Node | null | undefined): node is Text => {
+  if (node && node.type === 'TEXT') return true;
+
+  return false;
+};
+
+export const normalizeStyleKey = (key: string): string[] => {
   return key.split('/').map((part, index) => {
     const name = camelCase(part.toLowerCase());
 
@@ -120,6 +142,22 @@ export const getPaintColorValue = (
   return `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
 };
 
+const isFontFamilyInMap = (
+  fontFamily: string
+): fontFamily is keyof typeof FONT_FAMILY_MAP => {
+  return FONT_FAMILY_MAP.hasOwnProperty(fontFamily);
+};
+
+const mapFigmaFontFamilyToCSSVariable = (fontFamily: string): string | null => {
+  if (isFontFamilyInMap(fontFamily)) {
+    return FONT_FAMILY_MAP[fontFamily];
+  }
+
+  throw new Error(
+    `Unsupported font family '${fontFamily}'. Does this need added to the map or updated in Figma?`
+  );
+};
+
 export const getNodeColor = (node: Rectangle): string | null => {
   const { fills } = node;
 
@@ -132,8 +170,53 @@ export const getNodeColor = (node: Rectangle): string | null => {
   return null;
 };
 
+export const getNodeText = (node: Text): TextStyle => {
+  const {
+    fontFamily,
+    fontSize,
+    fontWeight,
+    italic,
+    letterSpacing,
+    lineHeightPercentFontSize,
+    textCase,
+  } = node.style;
+
+  const mappedFontFamily = mapFigmaFontFamilyToCSSVariable(fontFamily);
+
+  const textStyle: TextStyle = {
+    // TODO: Maybe we want to REM this?
+    fontSize: `${fontSize}px`,
+    fontWeight: fontWeight.toString(),
+    lineHeight: lineHeightPercentFontSize
+      ? Number((lineHeightPercentFontSize * 0.01).toFixed(3)).toString()
+      : '1',
+  };
+
+  if (mappedFontFamily) {
+    textStyle.fontFamily = mappedFontFamily;
+  }
+
+  if (letterSpacing) {
+    textStyle.letterSpacing = `${Number(letterSpacing.toFixed(3))}px`;
+  }
+
+  if (italic) {
+    textStyle.fontStyle = 'italic';
+  }
+
+  if (textCase) {
+    if (textCase === 'LOWER') {
+      textStyle.textTransform = 'lowercase';
+    } else if (textCase === 'UPPER') {
+      textStyle.textTransform = 'uppercase';
+    }
+  }
+
+  return textStyle;
+};
+
 export const getNodeColorStyle = (node: Rectangle, colors: Colors): Colors => {
-  const normalizedKeys = normalizeColorKey(node.name);
+  const normalizedKeys = normalizeStyleKey(node.name);
   const colorValue = getNodeColor(node);
 
   if (colorValue) {
@@ -141,4 +224,14 @@ export const getNodeColorStyle = (node: Rectangle, colors: Colors): Colors => {
   }
 
   return colors;
+};
+
+export const getNodeTextStyle = (
+  node: Text,
+  textStyles: TextStyles
+): TextStyles => {
+  const normalizedKeys = normalizeStyleKey(node.name);
+  const textValue = getNodeText(node);
+
+  return set(textStyles, normalizedKeys, textValue);
 };

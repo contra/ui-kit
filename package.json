@@ -25,6 +25,8 @@
   "scripts": {
     "check:package": "yarn package-check",
     "check:tsc": "yarn tsc --noEmit",
+    "generate:colors": "node ./scripts/dist/generateColors",
+    "generate:textStyles": "node ./scripts/dist/generateTextStyles",
     "prepare": "husky install"
   },
   "devDependencies": {

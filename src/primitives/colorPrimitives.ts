@@ -1,5 +1,5 @@
 /* Generated file. Do not update manually! */
-export const colors = {
+export const colorPrimitives = {
   alert: {
     error: '#e06050',
     informational: '#5b9be0',

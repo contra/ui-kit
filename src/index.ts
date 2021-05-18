@@ -1,1 +1,1 @@
-export { colors } from './primitives/colors';
+export { colorPrimitives } from './primitives/colorPrimitives';
