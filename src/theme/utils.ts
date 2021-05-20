@@ -75,7 +75,7 @@ export const generateCSSVariablesMap = (
  * but values are transformed to:
  * `var(--scaleName-some-key)`.
  *
- * `cssVars` is an array of tuples that contain they var key and original value:
+ * `cssVars` is an array of tuples that contain the variable key and original value:
  * `[['--scaleName-some-key', '#131313']]`
  */
 export const generateThemeScaleCssVariables = (

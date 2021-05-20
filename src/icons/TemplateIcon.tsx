@@ -1,0 +1,70 @@
+import type { SVGProps } from 'react';
+export const TemplateIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    focusable="false"
+    role="img"
+    {...props}
+  >
+    <rect
+      x={3.5}
+      y={0.5}
+      width={17}
+      height={23}
+      rx={2.5}
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect
+      x={0.5}
+      y={-0.5}
+      width={10}
+      height={3}
+      rx={0.5}
+      transform="matrix(1 0 0 -1 13 20)"
+      fill="#fff"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect
+      x={13.5}
+      y={3.5}
+      width={10}
+      height={11}
+      rx={0.5}
+      fill="#fff"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16.666 7.667a1 1 0 100-2 1 1 0 000 2zM23.5 10l-2.835-2.333L13.5 14"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <rect
+      x={0.5}
+      y={5.5}
+      width={10}
+      height={13}
+      rx={0.5}
+      fill="#fff"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3 9.5h5M5.375 9.5v5"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);

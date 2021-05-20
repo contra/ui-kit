@@ -2,3 +2,5 @@ node_modules
 dist
 prettier.config.js
 jest.config.js
+/src/icons
+!/src/icons/index.ts
