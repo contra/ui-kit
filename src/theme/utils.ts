@@ -6,11 +6,11 @@ const hasMoreKeys = (keys: string[]): keys is [string, ...string[]] => {
   return false;
 };
 
-const setThemeScaleValue = (
-  scale: ThemeScaleObject,
+const setThemeScaleValue = <T extends ThemeScaleObject>(
+  scale: T,
   [first, ...rest]: [string, ...string[]],
   value: string
-): ThemeScaleObject => {
+): T => {
   const newScale = scale[first] ?? {};
 
   return {
@@ -78,12 +78,12 @@ export const generateCSSVariablesMap = (
  * `cssVars` is an array of tuples that contain the variable key and original value:
  * `[['--scaleName-some-key', '#131313']]`
  */
-export const generateThemeScaleCssVariables = (
+export const generateThemeScaleCssVariables = <T extends ThemeScaleObject>(
   scaleName: string,
-  scale: ThemeScaleObject
-): [scale: ThemeScaleObject, cssVars: CSSVariables] => {
+  scale: T
+): [scale: T, cssVars: CSSVariables] => {
   const cssVariables = generateCSSVariablesMap(scaleName, scale);
-  let newScale: ThemeScaleObject = {};
+  let newScale = {};
 
   for (const [key] of cssVariables) {
     const scaleKeys = key.replace(`--${scaleName}-`, '').split('-');
@@ -93,5 +93,5 @@ export const generateThemeScaleCssVariables = (
     }
   }
 
-  return [newScale, cssVariables];
+  return [newScale as T, cssVariables];
 };
