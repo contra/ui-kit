@@ -33,6 +33,9 @@ jobs:
       - name: 📦 Install Dependencies
         run: yarn --frozen-lockfile
 
+      - name: 🏗 Building
+        run: yarn build
+
       - name: 🚀 Releasing
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
