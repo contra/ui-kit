@@ -3,14 +3,25 @@ import camelCase from 'camelcase';
 import type {
   ClientInterface,
   Color,
+  Component,
+  FullComponentMetadata,
   FullStyleMetadata,
   Node,
   Rectangle,
   StyleType,
   Text,
 } from 'figma-js';
+import got from 'got';
 import { set } from 'lodash';
-import type { Colors, TextStyle, TextStyles } from '../types';
+import pLimit from 'p-limit';
+import type {
+  Colors,
+  FigmaAssets,
+  FullComponentMetadataWithVariant,
+  IconData,
+  TextStyle,
+  TextStyles,
+} from '../types';
 
 /**
  * This is used to map `fontFamily` values from Figma `TextStyle`'s to
@@ -29,8 +40,43 @@ const FONT_FAMILY_MAP = {
   Inter: null,
 };
 
+export const downloadFigmaAssets = (
+  assets: FigmaAssets
+): Promise<Array<[nodeId: string, svg: string]>> => {
+  const limit = pLimit(30);
+
+  return Promise.all(
+    assets.map(([nodeId, assetUrl]) => {
+      return limit(async () => {
+        try {
+          const { body: svg } = await got.get(assetUrl, {
+            headers: { 'Content-Type': 'images/svg+xml' },
+          });
+
+          const result: [string, string] = [nodeId, svg];
+
+          return result;
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log('Error downloading file');
+          throw error;
+        }
+      });
+    })
+  );
+};
+
 export const handleFigmaAxiosClientError = (error: AxiosError) => {
   throw new Error(error.message);
+};
+
+export const getFileComponents = async (
+  client: ClientInterface,
+  fileId: string
+): Promise<readonly FullComponentMetadata[]> => {
+  const fileComponents = await client.fileComponents(fileId);
+
+  return fileComponents.data.meta.components;
 };
 
 export const getTeamStyles = async (
@@ -78,6 +124,14 @@ export const filterStyleMetadata =
 
     return matchFile && style.style_type === styleType;
   };
+
+export const isComponentNode = (
+  node: Node | null | undefined
+): node is Component => {
+  if (node && node.type === 'COMPONENT') return true;
+
+  return false;
+};
 
 export const isRectangleNode = (
   node: Node | null | undefined
@@ -236,4 +290,84 @@ export const getNodeTextStyle = (
   const textValue = getNodeText(node);
 
   return set(textStyles, normalizedKeys, textValue);
+};
+
+const isIconData = (data: IconData | null): data is IconData => {
+  if (data === null) return false;
+
+  return true;
+};
+
+export const isComponentWithVariant = (
+  component: FullComponentMetadata | FullComponentMetadataWithVariant
+): component is FullComponentMetadataWithVariant => {
+  if (component.containing_frame.hasOwnProperty('containingStateGroup'))
+    return true;
+
+  return false;
+};
+
+const isNotNull = <T>(value: T | null): value is T => {
+  return value !== null;
+};
+
+export const getComponentVariantNames = (
+  component: FullComponentMetadataWithVariant
+): string[] => {
+  return component.name
+    .split(', ')
+    .map((variant) => variant.split('=')[1] ?? null)
+    .filter(isNotNull);
+};
+
+export const getIconComponentName = (
+  component: FullComponentMetadata | FullComponentMetadataWithVariant
+): string => {
+  if (isComponentWithVariant(component))
+    return [
+      component.containing_frame.containingStateGroup.name,
+      ...getComponentVariantNames(component),
+    ].join('/');
+
+  return component.name;
+};
+
+export const generateIconData = (
+  components: FullComponentMetadata[],
+  downloadedAssets: Array<[nodeId: string, svg: string]>
+): IconData[] => {
+  return downloadedAssets
+    .map(([nodeId, svg]) => {
+      const componentData = components.find((component) => {
+        return component.node_id === nodeId;
+      });
+
+      if (componentData) {
+        const name = getIconComponentName(componentData);
+
+        const { description } = componentData;
+
+        const data: IconData = {
+          componentName: `${name
+            // First replace all unsupported characters
+            .replace(/[^\d/A-Z_-\sa-z]+/g, '')
+            .replace(/^icon\//, '')
+            .split(/[./_-\s]/)
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join('')}Icon`,
+          figmaName: name,
+          keywords: description
+            .trim()
+            .split(',')
+            .map((keyword) => keyword.trim()),
+          nodeId,
+          svg,
+        };
+
+        return data;
+      }
+
+      return null;
+    })
+    .filter(isIconData);
 };

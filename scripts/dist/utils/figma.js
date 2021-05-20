@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNodeTextStyle = exports.getNodeColorStyle = exports.getNodeText = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeStyleKey = exports.isTextNode = exports.isRectangleNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.handleFigmaAxiosClientError = void 0;
+exports.generateIconData = exports.getIconComponentName = exports.getComponentVariantNames = exports.isComponentWithVariant = exports.getNodeTextStyle = exports.getNodeColorStyle = exports.getNodeText = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeStyleKey = exports.isTextNode = exports.isRectangleNode = exports.isComponentNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.getFileComponents = exports.handleFigmaAxiosClientError = exports.downloadFigmaAssets = void 0;
 const tslib_1 = require("tslib");
 const camelcase_1 = tslib_1.__importDefault(require("camelcase"));
+const got_1 = tslib_1.__importDefault(require("got"));
 const lodash_1 = require("lodash");
+const p_limit_1 = tslib_1.__importDefault(require("p-limit"));
 /**
  * This is used to map `fontFamily` values from Figma `TextStyle`'s to
  * CSS vars so we can cut down on the amount of unnecessary bytes.
@@ -20,10 +22,35 @@ const FONT_FAMILY_MAP = {
     // set it in our CSS code per text style.
     Inter: null,
 };
+const downloadFigmaAssets = (assets) => {
+    const limit = p_limit_1.default(30);
+    return Promise.all(assets.map(([nodeId, assetUrl]) => {
+        return limit(async () => {
+            try {
+                const { body: svg } = await got_1.default.get(assetUrl, {
+                    headers: { 'Content-Type': 'images/svg+xml' },
+                });
+                const result = [nodeId, svg];
+                return result;
+            }
+            catch (error) {
+                // eslint-disable-next-line no-console
+                console.log('Error downloading file');
+                throw error;
+            }
+        });
+    }));
+};
+exports.downloadFigmaAssets = downloadFigmaAssets;
 const handleFigmaAxiosClientError = (error) => {
     throw new Error(error.message);
 };
 exports.handleFigmaAxiosClientError = handleFigmaAxiosClientError;
+const getFileComponents = async (client, fileId) => {
+    const fileComponents = await client.fileComponents(fileId);
+    return fileComponents.data.meta.components;
+};
+exports.getFileComponents = getFileComponents;
 const getTeamStyles = async (client, teamId) => {
     const styles = [];
     let hasMoreStyles = true;
@@ -61,6 +88,12 @@ const filterStyleMetadata = (styleType, fileId) => (style) => {
     return matchFile && style.style_type === styleType;
 };
 exports.filterStyleMetadata = filterStyleMetadata;
+const isComponentNode = (node) => {
+    if (node && node.type === 'COMPONENT')
+        return true;
+    return false;
+};
+exports.isComponentNode = isComponentNode;
 const isRectangleNode = (node) => {
     if (node && node.type === 'RECTANGLE')
         return true;
@@ -175,3 +208,65 @@ const getNodeTextStyle = (node, textStyles) => {
     return lodash_1.set(textStyles, normalizedKeys, textValue);
 };
 exports.getNodeTextStyle = getNodeTextStyle;
+const isIconData = (data) => {
+    if (data === null)
+        return false;
+    return true;
+};
+const isComponentWithVariant = (component) => {
+    if (component.containing_frame.hasOwnProperty('containingStateGroup'))
+        return true;
+    return false;
+};
+exports.isComponentWithVariant = isComponentWithVariant;
+const isNotNull = (value) => {
+    return value !== null;
+};
+const getComponentVariantNames = (component) => {
+    return component.name
+        .split(', ')
+        .map((variant) => variant.split('=')[1] ?? null)
+        .filter(isNotNull);
+};
+exports.getComponentVariantNames = getComponentVariantNames;
+const getIconComponentName = (component) => {
+    if (exports.isComponentWithVariant(component))
+        return [
+            component.containing_frame.containingStateGroup.name,
+            ...exports.getComponentVariantNames(component),
+        ].join('/');
+    return component.name;
+};
+exports.getIconComponentName = getIconComponentName;
+const generateIconData = (components, downloadedAssets) => {
+    return downloadedAssets
+        .map(([nodeId, svg]) => {
+        const componentData = components.find((component) => {
+            return component.node_id === nodeId;
+        });
+        if (componentData) {
+            const name = exports.getIconComponentName(componentData);
+            const { description } = componentData;
+            const data = {
+                componentName: `${name
+                    // First replace all unsupported characters
+                    .replace(/[^\d/A-Z_-\sa-z]+/g, '')
+                    .replace(/^icon\//, '')
+                    .split(/[./_-\s]/)
+                    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+                    .join('')}Icon`,
+                figmaName: name,
+                keywords: description
+                    .trim()
+                    .split(',')
+                    .map((keyword) => keyword.trim()),
+                nodeId,
+                svg,
+            };
+            return data;
+        }
+        return null;
+    })
+        .filter(isIconData);
+};
+exports.generateIconData = generateIconData;
