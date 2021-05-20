@@ -19,9 +19,11 @@ import type { Colors, TextStyle, TextStyles } from '../types';
  * If generating text styles results in an error about unknown font family
  * we either need to add it to this map, or consult the design team and verify
  * if we are shipping another font family stack.
+ *
+ * See /src/theme/fonts for font stacks
  */
 const FONT_FAMILY_MAP = {
-  'IBM Plex Mono': 'var(--fonts-mono)',
+  'IBM Plex Mono': 'var(--font-mono)',
   // Since "Inter" is our base font family and should be set on <body>, no need to explicitly
   // set it in our CSS code per text style.
   Inter: null,

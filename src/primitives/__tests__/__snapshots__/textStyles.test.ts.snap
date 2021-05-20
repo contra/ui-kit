@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`textStyles should match snapshot 1`] = `
+Object {
+  "body": Object {
+    "regular": Object {
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "1.5",
+    },
+    "small": Object {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "letterSpacing": "0.15px",
+      "lineHeight": "1.429",
+    },
+  },
+  "button": Object {
+    "regular": Object {
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "1.5",
+    },
+  },
+  "caption": Object {
+    "bold": Object {
+      "fontSize": "12px",
+      "fontWeight": "600",
+      "letterSpacing": "0.15px",
+      "lineHeight": "1.333",
+    },
+    "regular": Object {
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "letterSpacing": "0.15px",
+      "lineHeight": "1.333",
+    },
+  },
+  "codeBlock": Object {
+    "regular": Object {
+      "fontFamily": "var(--font-family-mono)",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "1.5",
+    },
+  },
+  "heading": Object {
+    "h1": Object {
+      "fontSize": "93px",
+      "fontWeight": "700",
+      "letterSpacing": "-2.5px",
+      "lineHeight": "1.29",
+    },
+    "h2": Object {
+      "fontSize": "58px",
+      "fontWeight": "700",
+      "letterSpacing": "-1px",
+      "lineHeight": "1.241",
+    },
+    "h3": Object {
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "letterSpacing": "-0.75px",
+      "lineHeight": "1.25",
+    },
+    "h4": Object {
+      "fontSize": "34px",
+      "fontWeight": "700",
+      "letterSpacing": "-0.5px",
+      "lineHeight": "1.294",
+    },
+    "h5": Object {
+      "fontSize": "23px",
+      "fontWeight": "600",
+      "letterSpacing": "-0.25px",
+      "lineHeight": "1.391",
+    },
+    "h6": Object {
+      "fontSize": "19px",
+      "fontWeight": "600",
+      "lineHeight": "1.474",
+    },
+  },
+  "overline": Object {
+    "regular": Object {
+      "fontSize": "10px",
+      "fontWeight": "500",
+      "letterSpacing": "1.2px",
+      "lineHeight": "1.6",
+      "textTransform": "uppercase",
+    },
+  },
+  "subtitle": Object {
+    "regular": Object {
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "letterSpacing": "-0.15px",
+      "lineHeight": "1.5",
+    },
+    "small": Object {
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "1.429",
+    },
+  },
+}
+`;
