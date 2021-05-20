@@ -6,7 +6,7 @@ const hasMoreKeys = (keys: string[]): keys is [string, ...string[]] => {
   return false;
 };
 
-const set = (
+const setThemeScaleValue = (
   scale: ThemeScaleObject,
   [first, ...rest]: [string, ...string[]],
   value: string
@@ -17,7 +17,7 @@ const set = (
     ...scale,
     [first]:
       typeof newScale === 'object' && hasMoreKeys(rest)
-        ? set(newScale, rest, value)
+        ? setThemeScaleValue(newScale, rest, value)
         : value,
   };
 };
@@ -89,7 +89,7 @@ export const generateThemeScaleCssVariables = (
     const scaleKeys = key.replace(`--${scaleName}-`, '').split('-');
 
     if (hasMoreKeys(scaleKeys)) {
-      newScale = set(newScale, scaleKeys, `var(${key})`);
+      newScale = setThemeScaleValue(newScale, scaleKeys, `var(${key})`);
     }
   }
 
