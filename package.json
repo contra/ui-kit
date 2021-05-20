@@ -23,11 +23,13 @@
     "uikit"
   ],
   "scripts": {
+    "build": "yarn tsc",
     "check:package": "yarn package-check",
     "check:tsc": "yarn tsc --noEmit",
     "generate:colors": "node ./scripts/dist/generateColors",
     "generate:icons": "node ./scripts/dist/generateIcons",
     "generate:textStyles": "node ./scripts/dist/generateTextStyles",
+    "lint": "eslint src",
     "prepare": "husky install",
     "test": "yarn jest"
   },
