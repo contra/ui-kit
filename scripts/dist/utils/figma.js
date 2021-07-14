@@ -107,12 +107,8 @@ const isTextNode = (node) => {
 };
 exports.isTextNode = isTextNode;
 const normalizeStyleKey = (key) => {
-    return key.split('/').map((part, index) => {
-        const name = camelcase_1.default(part.toLowerCase());
-        if (/^\d/.test(name)) {
-            return `${camelcase_1.default((key.split('/')[index - 1] ?? '').toLowerCase())}${name}`;
-        }
-        return name;
+    return key.split('/').map((part) => {
+        return camelcase_1.default(part.toLowerCase());
     });
 };
 exports.normalizeStyleKey = normalizeStyleKey;
@@ -194,10 +190,11 @@ const getNodeText = (node) => {
 };
 exports.getNodeText = getNodeText;
 const getNodeColorStyle = (node, colors) => {
-    const normalizedKeys = exports.normalizeStyleKey(node.name);
+    const normalizedKeyParts = exports.normalizeStyleKey(node.name);
     const colorValue = exports.getNodeColor(node);
+    const key = camelcase_1.default(normalizedKeyParts);
     if (colorValue) {
-        return lodash_1.set(colors, normalizedKeys, colorValue);
+        return { ...colors, [key]: colorValue };
     }
     return colors;
 };

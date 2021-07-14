@@ -148,16 +148,8 @@ export const isTextNode = (node: Node | null | undefined): node is Text => {
 };
 
 export const normalizeStyleKey = (key: string): string[] => {
-  return key.split('/').map((part, index) => {
-    const name = camelCase(part.toLowerCase());
-
-    if (/^\d/.test(name)) {
-      return `${camelCase(
-        (key.split('/')[index - 1] ?? '').toLowerCase()
-      )}${name}`;
-    }
-
-    return name;
+  return key.split('/').map((part) => {
+    return camelCase(part.toLowerCase());
   });
 };
 
@@ -272,11 +264,13 @@ export const getNodeText = (node: Text): TextStyle => {
 };
 
 export const getNodeColorStyle = (node: Rectangle, colors: Colors): Colors => {
-  const normalizedKeys = normalizeStyleKey(node.name);
+  const normalizedKeyParts = normalizeStyleKey(node.name);
   const colorValue = getNodeColor(node);
 
+  const key = camelCase(normalizedKeyParts);
+
   if (colorValue) {
-    return set(colors, normalizedKeys, colorValue);
+    return { ...colors, [key]: colorValue };
   }
 
   return colors;
