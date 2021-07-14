@@ -72,11 +72,9 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
       prettier.format(
         util.formatWithOptions(
           { compact: false },
-          `/* eslint-disable unicorn/no-abusive-eslint-disable */
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/* eslint-disable */
-
-/* Generated file. Do not update manually! */      
+          `/* eslint-disable */
+/* Generated file. Do not update manually! */
+     
 export const colorPrimitives = %o;`,
           colors
         ),

@@ -5,3 +5,5 @@ prettier.config.js
 jest.config.js
 /src/icons
 !/src/icons/index.ts
+/src/primitives/colorPrimitives.ts
+/src/primitives/textStyles.ts

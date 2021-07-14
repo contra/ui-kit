@@ -52,11 +52,9 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
         }
         // Fetch team styles
         console.log(`💾 Saving colors to ${FILE_NAME}`);
-        fs.writeFileSync(OUTPUT_FILE, prettier_1.default.format(util.formatWithOptions({ compact: false }, `/* eslint-disable unicorn/no-abusive-eslint-disable */
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/* eslint-disable */
-
-/* Generated file. Do not update manually! */      
+        fs.writeFileSync(OUTPUT_FILE, prettier_1.default.format(util.formatWithOptions({ compact: false }, `/* eslint-disable */
+/* Generated file. Do not update manually! */
+     
 export const colorPrimitives = %o;`, colors), {
             parser: 'typescript',
             singleQuote: true,
