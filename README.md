@@ -23,14 +23,14 @@ To install Contra's UI Kit into your project follow the steps:
 1. Add the following to the projects `.npmrc` file:
 
 ```
-@contrawork:registry=https://npm.pkg.github.com/
+@contra:registry=https://npm.pkg.github.com/
 ```
 
-2. Add `@contrawork/ui-kit` and its peer dependencies to the project:
+2. Add `@contra/ui-kit` and its peer dependencies to the project:
 
 ```bash
 # using yarn
-yarn add @contrawork/ui-kit
+yarn add @contra/ui-kit
 ```
 
 ## Docs
