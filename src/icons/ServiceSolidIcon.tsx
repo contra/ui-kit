@@ -11,24 +11,15 @@ export const ServiceSolidIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"
+      d="M11 14h.647l-.273 1.5H11a.75.75 0 010-1.5zM13 18.5h-.647l.273-1.5H13a.75.75 0 010 1.5z"
       fill="currentColor"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path d="M13.996 2v6h6" fill="#fff" />
-    <path
-      d="M13.996 2v6h6l-6-6z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     />
     <path
-      d="M12.758 10.76l-1.375 8.08M14.361 11.594h-3.438a1.604 1.604 0 000 3.208h2.292a1.604 1.604 0 010 3.208H9.32"
-      stroke="#fff"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M10.5.034V7.5H3.162A2 2 0 003 8.288V22a2 2 0 002 2h14a2 2 0 002-2V2a2 2 0 00-2-2h-8.13a2 2 0 00-.37.034zM11 12.5a2.25 2.25 0 000 4.5h.101l-.272 1.5H9V20h1.556l-.294 1.616 1.476.268L12.08 20H13a2.25 2.25 0 000-4.5h-.101l.272-1.5H15v-1.5h-1.556l.294-1.616-1.476-.268-.343 1.884H11z"
+      fill="currentColor"
     />
+    <path d="M9 1.071V6H4.4L9 1.071z" fill="currentColor" />
   </svg>
 );

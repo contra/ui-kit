@@ -11,10 +11,8 @@ export const AddIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M12 3.515v16.97M3.515 12h16.97"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M11.25 2v9.25H2v1.5h9.25V22h1.5v-9.25H22v-1.5h-9.25V2h-1.5z"
+      fill="currentColor"
     />
   </svg>
 );

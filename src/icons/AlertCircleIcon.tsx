@@ -11,17 +11,14 @@ export const AlertCircleIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 8v4"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M11 16a1 1 0 112 0 1 1 0 01-2 0zM12.75 13V7h-1.5v6h1.5z"
+      fill="currentColor"
     />
     <path
-      d="M12 16h.01"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zM12 22.5c5.799 0 10.5-4.701 10.5-10.5S17.799 1.5 12 1.5 1.5 6.201 1.5 12 6.201 22.5 12 22.5z"
+      fill="currentColor"
     />
   </svg>
 );

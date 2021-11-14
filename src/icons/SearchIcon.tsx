@@ -11,10 +11,10 @@ export const SearchIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M11 19a8 8 0 100-16 8 8 0 000 16zM22 22l-5-5"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M13.214 16.34a8.25 8.25 0 111.65-1.659c.371.104.725.281 1.04.531l6.562 5.2-.932 1.176-6.56-5.2a1.468 1.468 0 00-1.76-.048zM1.5 9.75a6.75 6.75 0 1110.822 5.384l-.015.011A6.75 6.75 0 011.5 9.75z"
+      fill="currentColor"
     />
   </svg>
 );

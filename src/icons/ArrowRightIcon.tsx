@@ -11,10 +11,8 @@ export const ArrowRightIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M5 12h14M12 5l7 7-7 7"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M11.47 19.47l6.72-6.72H4v-1.5h14.19l-6.72-6.72 1.06-1.06L21.06 12l-8.53 8.53-1.06-1.06z"
+      fill="currentColor"
     />
   </svg>
 );

@@ -11,10 +11,8 @@ export const ParagraphCenterIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      d="M3.75 4.25h16.5M8.75 11.25h6.5M5.75 18.25h12.5"
+      d="M22 6H2V4.5h20V6zM17 12.75H8v-1.5h9v1.5zM4 19.5h16V18H4v1.5z"
+      fill="currentColor"
     />
   </svg>
 );

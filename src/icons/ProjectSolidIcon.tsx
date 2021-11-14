@@ -10,19 +10,13 @@ export const ProjectSolidIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <path d="M6 2h8l6 6v6.285H4V4a2 2 0 012-2z" fill="currentColor" />
+    <path d="M8 20.25h8v-1.5H8v1.5z" fill="currentColor" />
     <path
-      d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M10.5.034A2 2 0 0110.87 0H19a2 2 0 012 2v20a2 2 0 01-2 2H5a2 2 0 01-2-2V8.288a2 2 0 01.162-.788H10.5V.034zM4.5 16.5V22a.5.5 0 00.5.5h14a.5.5 0 00.5-.5v-5.5h-15z"
+      fill="currentColor"
     />
-    <path d="M14 2v6h6" fill="#fff" />
-    <path
-      d="M14 2v6h6l-6-6zM16 18.143H8"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M9 6V1.071L4.4 6H9z" fill="currentColor" />
   </svg>
 );

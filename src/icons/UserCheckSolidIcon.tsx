@@ -10,26 +10,9 @@ export const UserCheckSolidIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" fill="currentColor" />
     <path
-      d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h15z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M8.5 11a4 4 0 100-8 4 4 0 000 8z"
+      d="M13 8a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM9.5 13.75c-2.69 0-4.701.945-5.73 1.565-.508.305-.77.868-.77 1.46V21h13v-4.224c0-.593-.262-1.156-.77-1.461A11.195 11.195 0 009.5 13.75zM21.53 9.53l-1.06-1.06L17 11.94l-1.47-1.47-1.06 1.06L17 14.06l4.53-4.53z"
       fill="currentColor"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M17 11l2 2 4-4"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
     />
   </svg>
 );

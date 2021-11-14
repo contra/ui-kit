@@ -3,7 +3,7 @@ export const CommunitySolidIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"
-    viewBox="0 0 29 24"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     focusable="false"
@@ -11,35 +11,10 @@ export const CommunitySolidIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M.5 17.111v1.556h3.444C3.422 16.4 4.495 14.61 5.097 14H3.61A3.111 3.111 0 00.5 17.111zM6.5 11.222a3.111 3.111 0 111.264-5.954c-.056.96.133 3.216 1.333 4.556a3.108 3.108 0 01-2.598 1.398z"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M15 7a3 3 0 11-6 0 3 3 0 016 0zm-3 4.25c-3.797 0-5.767 1.086-6.71 1.92-.118.103-.184.198-.32.4a3.13 3.13 0 00-.216.412c-.055.12-.131.3-.166.434a2.48 2.48 0 00-.088.74V20.5h15v-5.343c0-.234-.002-.407-.088-.741a3.122 3.122 0 00-.166-.434 3.132 3.132 0 00-.215-.411 9.465 9.465 0 00-.082-.12l.929-.892c.718.748.872 1.664.872 2.292V18H24v-4.189c0-.36-.096-.717-.345-.979C23.032 12.177 21.496 11 18.5 11c-.302 0-.589.012-.862.034 1.045.47 1.764 1.028 2.24 1.525l-.93.891a1.406 1.406 0 00-.237-.28c-.944-.834-2.914-1.92-6.711-1.92zM5.5 9a2 2 0 100-4 2 2 0 000 4zm15-2a2 2 0 11-4 0 2 2 0 014 0zm-15 4c.302 0 .589.012.862.034-1.045.47-1.764 1.028-2.24 1.525-.718.748-.872 1.664-.872 2.292V18H0v-4.189c0-.36.096-.717.345-.979C.968 12.177 2.504 11 5.5 11z"
       fill="currentColor"
-      stroke="currentColor"
-      strokeLinecap="square"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M22.097 22v-4a4 4 0 00-4-4h-8a4 4 0 00-4 4v4"
-      fill="currentColor"
-    />
-    <path
-      d="M22.097 22v-4a4 4 0 00-4-4h-8a4 4 0 00-4 4v4h16z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14.097 10a4 4 0 100-8 4 4 0 000 8z"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M21.695 11.222a3.111 3.111 0 10-1.265-5.954c.056.96-.132 3.216-1.332 4.556a3.108 3.108 0 002.597 1.398zM27.694 17.111v1.556h-3.445c.522-2.267-.55-4.056-1.152-4.667h1.485a3.111 3.111 0 013.111 3.111z"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeLinecap="square"
-      strokeLinejoin="round"
     />
   </svg>
 );

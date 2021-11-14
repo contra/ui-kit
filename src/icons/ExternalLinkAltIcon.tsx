@@ -11,10 +11,8 @@ export const ExternalLinkAltIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M12.398 6h6.6v6.6M6 19L19 6"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M3.53 21.53L19.5 5.56V13H21V3H11v1.5h7.44L2.47 20.47l1.06 1.06z"
+      fill="currentColor"
     />
   </svg>
 );
