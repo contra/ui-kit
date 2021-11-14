@@ -2,17 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 /* eslint-disable no-console */
-const path = tslib_1.__importStar(require("path"));
-const core_1 = tslib_1.__importDefault(require("@svgr/core"));
-const Figma = tslib_1.__importStar(require("figma-js"));
-const fs = tslib_1.__importStar(require("fs-extra"));
-const prettier_1 = tslib_1.__importDefault(require("prettier"));
+const path = (0, tslib_1.__importStar)(require("path"));
+const core_1 = (0, tslib_1.__importDefault)(require("@svgr/core"));
+const Figma = (0, tslib_1.__importStar)(require("figma-js"));
+const fs = (0, tslib_1.__importStar)(require("fs-extra"));
+const prettier_1 = (0, tslib_1.__importDefault)(require("prettier"));
 const figma_1 = require("./utils/figma");
-// eslint rule doesn't mix with `noPropertyAccessFromIndexSignature` yet.
-// https://github.com/typescript-eslint/typescript-eslint/issues/3104
-// eslint-disable-next-line @typescript-eslint/dot-notation
 const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
-const FILE_ID = 'L8Te5meCiyl4s3qkbYLpYN';
+const FILE_ID = 'owwo3mjL0dCKJijKGaf1XB';
 const OUTPUT_DIR = '../../src/icons/';
 const OUTPUT_PATH = path.resolve(__dirname, OUTPUT_DIR);
 const INDEX_PATH = path.resolve(OUTPUT_PATH, 'index.ts');
@@ -34,16 +31,19 @@ export const ${componentName} = (props: SVGProps<SVGSVGElement>) => ${jsx};
     try {
         // Fetch team components
         console.log('💅 Fetching file components');
-        const fileComponents = await figma_1.getFileComponents(client, FILE_ID);
+        const fileComponents = await (0, figma_1.getFileComponents)(client, FILE_ID);
         const iconComponents = fileComponents
             .filter((component) => {
-            const componentName = figma_1.getIconComponentName(component);
-            return (componentName.startsWith('icon/') &&
-                component.containing_frame.name === 'Icons');
+            const componentName = (0, figma_1.getIconComponentName)(component);
+            // Look only for components that start with `##px/` or `social/` in the `Icons` and `Social Icons` frames.
+            return ((/^\d{2,3}px\//.test(componentName) ||
+                componentName.startsWith('social/')) &&
+                (component.containing_frame.name === 'Icons' ||
+                    component.containing_frame.name === 'Social Icons'));
         })
             .sort((a, b) => {
-            const aComponentName = figma_1.getIconComponentName(a);
-            const bComponentName = figma_1.getIconComponentName(b);
+            const aComponentName = (0, figma_1.getIconComponentName)(a);
+            const bComponentName = (0, figma_1.getIconComponentName)(b);
             return aComponentName.localeCompare(bComponentName);
         });
         // Get icon svg images
@@ -53,8 +53,8 @@ export const ${componentName} = (props: SVGProps<SVGSVGElement>) => ${jsx};
         });
         const images = await client.fileImages(FILE_ID, { format: 'svg', ids });
         const iconImages = Object.entries(images.data.images);
-        const downloadedAssets = await figma_1.downloadFigmaAssets(iconImages);
-        const iconData = figma_1.generateIconData(iconComponents, downloadedAssets);
+        const downloadedAssets = await (0, figma_1.downloadFigmaAssets)(iconImages);
+        const iconData = (0, figma_1.generateIconData)(iconComponents, downloadedAssets);
         // Clear the output directory if it exists.
         if (fs.existsSync(OUTPUT_PATH)) {
             fs.removeSync(OUTPUT_PATH);
@@ -68,7 +68,7 @@ export const ${componentName} = (props: SVGProps<SVGSVGElement>) => ${jsx};
         let generatedCount = 0;
         for (const icon of iconData) {
             try {
-                const code = await core_1.default(icon.svg, {
+                const code = await (0, core_1.default)(icon.svg, {
                     // dimensions: false,
                     icon: true,
                     plugins: [

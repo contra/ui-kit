@@ -1,4 +1,3 @@
-import type { AxiosError } from 'axios';
 import camelCase from 'camelcase';
 import type {
   ClientInterface,
@@ -66,8 +65,8 @@ export const downloadFigmaAssets = (
   );
 };
 
-export const handleFigmaAxiosClientError = (error: AxiosError) => {
-  throw new Error(error.message);
+export const handleFigmaAxiosClientError = (error: unknown) => {
+  throw error;
 };
 
 export const getFileComponents = async (
@@ -97,9 +96,7 @@ export const getTeamStyles = async (
 
       const { meta } = teamStyles.data;
 
-      // @ts-expect-error - typing is incorrect see https://github.com/jongold/figma-js/pull/51
       if (meta.cursor.after) {
-        // @ts-expect-error - typing is incorrect see https://github.com/jongold/figma-js/pull/51
         after = meta.cursor.after;
       } else {
         after = 0;
@@ -345,8 +342,11 @@ export const generateIconData = (
           componentName: `${name
             // First replace all unsupported characters
             .replace(/[^\d/A-Z_-\sa-z]+/g, '')
-            .replace(/^icon\//, '')
+            // Replace the sizes
+            .replace(/^24px\//, '')
+            .replace(/^(\d+px\/)(.+)/, '$2/$1')
             .split(/[./_-\s]/)
+            .filter(Boolean)
             .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
             .join('')}Icon`,
           figmaName: name,

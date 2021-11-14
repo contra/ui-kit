@@ -14,11 +14,8 @@ import {
   getIconComponentName,
 } from './utils/figma';
 
-// eslint rule doesn't mix with `noPropertyAccessFromIndexSignature` yet.
-// https://github.com/typescript-eslint/typescript-eslint/issues/3104
-// eslint-disable-next-line @typescript-eslint/dot-notation
 const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
-const FILE_ID = 'L8Te5meCiyl4s3qkbYLpYN';
+const FILE_ID = 'owwo3mjL0dCKJijKGaf1XB';
 const OUTPUT_DIR = '../../src/icons/';
 const OUTPUT_PATH = path.resolve(__dirname, OUTPUT_DIR);
 const INDEX_PATH = path.resolve(OUTPUT_PATH, 'index.ts');
@@ -55,9 +52,12 @@ export const ${componentName} = (props: SVGProps<SVGSVGElement>) => ${jsx};
       .filter((component) => {
         const componentName = getIconComponentName(component);
 
+        // Look only for components that start with `##px/` or `social/` in the `Icons` and `Social Icons` frames.
         return (
-          componentName.startsWith('icon/') &&
-          component.containing_frame.name === 'Icons'
+          (/^\d{2,3}px\//.test(componentName) ||
+            componentName.startsWith('social/')) &&
+          (component.containing_frame.name === 'Icons' ||
+            component.containing_frame.name === 'Social Icons')
         );
       })
       .sort((a, b) => {
