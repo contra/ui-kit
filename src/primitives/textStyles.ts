@@ -20,14 +20,14 @@ export const textStyles = {
   button: {
     regular: {
       fontSize: '16px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.5',
     },
   },
   caption: {
     bold: {
       fontSize: '12px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.333',
       letterSpacing: '0.15px',
     },
@@ -41,7 +41,7 @@ export const textStyles = {
   codeBlock: {
     regular: {
       fontSize: '16px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.5',
       fontFamily: 'var(--font-mono)',
     },
@@ -73,13 +73,13 @@ export const textStyles = {
     },
     h5: {
       fontSize: '23px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.391',
       letterSpacing: '-0.25px',
     },
     h6: {
       fontSize: '19px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.474',
     },
   },
@@ -95,13 +95,13 @@ export const textStyles = {
   subtitle: {
     regular: {
       fontSize: '16px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.5',
       letterSpacing: '-0.15px',
     },
     small: {
       fontSize: '14px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.429',
     },
   },
