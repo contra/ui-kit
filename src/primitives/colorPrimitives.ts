@@ -41,6 +41,7 @@ export const colorPrimitives = {
   white10: 'rgba(255,255,255,0.36)',
   white20: 'rgba(255,255,255,0.43)',
   white30: 'rgba(255,255,255,0.63)',
+  white40: 'rgba(255,255,255,0.86)',
   yellow10: '#fdf6e0',
   yellow20: '#fae7b1',
   yellow30: '#f6d77f',
