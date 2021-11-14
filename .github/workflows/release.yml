@@ -36,9 +36,6 @@ jobs:
       - name: 🏗 Building
         run: yarn build
 
-      - name: 🔧 Set Package type to "module"
-        run: ./bin/prepare.sh
-
       - name: 🚀 Releasing
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
