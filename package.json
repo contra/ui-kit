@@ -1,6 +1,6 @@
 {
   "name": "@contra/ui-kit",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "A React component library implementing Contra's Design System.",
   "repository": "https://github.com/contrawork/ui-kit",
   "author": "Contra Engineering Team <engineering@contra.com>",
