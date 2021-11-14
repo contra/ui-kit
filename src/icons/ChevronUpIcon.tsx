@@ -11,10 +11,8 @@ export const ChevronUpIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M18 15l-6-6-6 6"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M17.47 15.53L12 10.06l-5.47 5.47-1.06-1.06L12 7.94l6.53 6.53-1.06 1.06z"
+      fill="currentColor"
     />
   </svg>
 );

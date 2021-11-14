@@ -11,10 +11,8 @@ export const FilterIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      d="M1.75 6.25h20.5M4.75 12.25h14.5M8.75 18.25h6.5"
+      d="M22 6H2V4.5h20V6zM19 12.75H5v-1.5h14v1.5zM8 19.5h8V18H8v1.5z"
+      fill="currentColor"
     />
   </svg>
 );

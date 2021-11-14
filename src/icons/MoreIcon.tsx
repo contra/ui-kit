@@ -11,12 +11,8 @@ export const MoreIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M11.5 12a.5.5 0 100-1 .5.5 0 000 1zM18.5 12a.5.5 0 100-1 .5.5 0 000 1zM4.5 12a.5.5 0 100-1 .5.5 0 000 1z"
+      d="M5.5 13.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18.5 13.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM10.5 12a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0z"
       fill="currentColor"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
     />
   </svg>
 );

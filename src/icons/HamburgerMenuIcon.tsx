@@ -10,11 +10,6 @@ export const HamburgerMenuIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <path
-      d="M3 7h18M3 17h18"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M2 7.5h20V6H2v1.5zM2 18h20v-1.5H2V18z" fill="currentColor" />
   </svg>
 );

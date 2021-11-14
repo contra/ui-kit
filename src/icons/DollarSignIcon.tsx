@@ -11,10 +11,10 @@ export const DollarSignIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.874 19.5l-.612 3.366 1.476.268.661-3.634h4.06a4.125 4.125 0 000-8.25h-2.56L13.854 6H19V4.5h-4.874l.612-3.366-1.476-.268-.66 3.634h-4.06a4.125 4.125 0 100 8.25h2.56L10.147 18H5v1.5h4.874zm1.798-1.5h3.787a2.625 2.625 0 000-5.25h-2.833L11.672 18zm-.298-6.75L12.33 6H8.542a2.625 2.625 0 100 5.25h2.832z"
+      fill="currentColor"
     />
   </svg>
 );

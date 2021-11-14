@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateIconData = exports.getIconComponentName = exports.getComponentVariantNames = exports.isComponentWithVariant = exports.getNodeTextStyle = exports.getNodeColorStyle = exports.getNodeText = exports.getNodeColor = exports.getPaintColorValue = exports.convertRGBValueToHex = exports.convertRGBValue = exports.normalizeStyleKey = exports.isTextNode = exports.isRectangleNode = exports.isComponentNode = exports.filterStyleMetadata = exports.getTeamStyles = exports.getFileComponents = exports.handleFigmaAxiosClientError = exports.downloadFigmaAssets = void 0;
 const tslib_1 = require("tslib");
-const camelcase_1 = tslib_1.__importDefault(require("camelcase"));
-const got_1 = tslib_1.__importDefault(require("got"));
+const camelcase_1 = (0, tslib_1.__importDefault)(require("camelcase"));
+const got_1 = (0, tslib_1.__importDefault)(require("got"));
 const lodash_1 = require("lodash");
-const p_limit_1 = tslib_1.__importDefault(require("p-limit"));
+const p_limit_1 = (0, tslib_1.__importDefault)(require("p-limit"));
 /**
  * This is used to map `fontFamily` values from Figma `TextStyle`'s to
  * CSS vars so we can cut down on the amount of unnecessary bytes.
@@ -23,7 +23,7 @@ const FONT_FAMILY_MAP = {
     Inter: null,
 };
 const downloadFigmaAssets = (assets) => {
-    const limit = p_limit_1.default(30);
+    const limit = (0, p_limit_1.default)(30);
     return Promise.all(assets.map(([nodeId, assetUrl]) => {
         return limit(async () => {
             try {
@@ -43,7 +43,7 @@ const downloadFigmaAssets = (assets) => {
 };
 exports.downloadFigmaAssets = downloadFigmaAssets;
 const handleFigmaAxiosClientError = (error) => {
-    throw new Error(error.message);
+    throw error;
 };
 exports.handleFigmaAxiosClientError = handleFigmaAxiosClientError;
 const getFileComponents = async (client, fileId) => {
@@ -62,9 +62,7 @@ const getTeamStyles = async (client, teamId) => {
                 page_size: 100,
             });
             const { meta } = teamStyles.data;
-            // @ts-expect-error - typing is incorrect see https://github.com/jongold/figma-js/pull/51
             if (meta.cursor.after) {
-                // @ts-expect-error - typing is incorrect see https://github.com/jongold/figma-js/pull/51
                 after = meta.cursor.after;
             }
             else {
@@ -76,7 +74,7 @@ const getTeamStyles = async (client, teamId) => {
             }
         }
         catch (error) {
-            exports.handleFigmaAxiosClientError(error);
+            (0, exports.handleFigmaAxiosClientError)(error);
             break;
         }
     }
@@ -108,7 +106,7 @@ const isTextNode = (node) => {
 exports.isTextNode = isTextNode;
 const normalizeStyleKey = (key) => {
     return key.split('/').map((part) => {
-        return camelcase_1.default(part.toLowerCase());
+        return (0, camelcase_1.default)(part.toLowerCase());
     });
 };
 exports.normalizeStyleKey = normalizeStyleKey;
@@ -123,9 +121,9 @@ exports.convertRGBValueToHex = convertRGBValueToHex;
 const getPaintColorValue = (color, opacity) => {
     const rgb = {
         /* eslint-disable id-length */
-        b: exports.convertRGBValue(color.b),
-        g: exports.convertRGBValue(color.g),
-        r: exports.convertRGBValue(color.r),
+        b: (0, exports.convertRGBValue)(color.b),
+        g: (0, exports.convertRGBValue)(color.g),
+        r: (0, exports.convertRGBValue)(color.r),
         /* eslint-enable id-length */
     };
     const alpha = opacity
@@ -133,7 +131,7 @@ const getPaintColorValue = (color, opacity) => {
         : Number(color.a.toFixed(2));
     if (alpha === 1) {
         // Solid alpha, return hex.
-        return `#${exports.convertRGBValueToHex(rgb.r)}${exports.convertRGBValueToHex(rgb.g)}${exports.convertRGBValueToHex(rgb.b)}`;
+        return `#${(0, exports.convertRGBValueToHex)(rgb.r)}${(0, exports.convertRGBValueToHex)(rgb.g)}${(0, exports.convertRGBValueToHex)(rgb.b)}`;
     }
     // Return rgba
     return `rgba(${rgb.r},${rgb.g},${rgb.b},${alpha})`;
@@ -153,7 +151,7 @@ const getNodeColor = (node) => {
     const paint = fills[0];
     // TODO: Check that `blendMode` is normal?
     if (paint && paint.type === 'SOLID' && paint.color) {
-        return exports.getPaintColorValue(paint.color, paint.opacity);
+        return (0, exports.getPaintColorValue)(paint.color, paint.opacity);
     }
     return null;
 };
@@ -190,9 +188,9 @@ const getNodeText = (node) => {
 };
 exports.getNodeText = getNodeText;
 const getNodeColorStyle = (node, colors) => {
-    const normalizedKeyParts = exports.normalizeStyleKey(node.name);
-    const colorValue = exports.getNodeColor(node);
-    const key = camelcase_1.default(normalizedKeyParts);
+    const normalizedKeyParts = (0, exports.normalizeStyleKey)(node.name);
+    const colorValue = (0, exports.getNodeColor)(node);
+    const key = (0, camelcase_1.default)(normalizedKeyParts);
     if (colorValue) {
         return { ...colors, [key]: colorValue };
     }
@@ -200,9 +198,9 @@ const getNodeColorStyle = (node, colors) => {
 };
 exports.getNodeColorStyle = getNodeColorStyle;
 const getNodeTextStyle = (node, textStyles) => {
-    const normalizedKeys = exports.normalizeStyleKey(node.name);
-    const textValue = exports.getNodeText(node);
-    return lodash_1.set(textStyles, normalizedKeys, textValue);
+    const normalizedKeys = (0, exports.normalizeStyleKey)(node.name);
+    const textValue = (0, exports.getNodeText)(node);
+    return (0, lodash_1.set)(textStyles, normalizedKeys, textValue);
 };
 exports.getNodeTextStyle = getNodeTextStyle;
 const isIconData = (data) => {
@@ -227,10 +225,10 @@ const getComponentVariantNames = (component) => {
 };
 exports.getComponentVariantNames = getComponentVariantNames;
 const getIconComponentName = (component) => {
-    if (exports.isComponentWithVariant(component))
+    if ((0, exports.isComponentWithVariant)(component))
         return [
             component.containing_frame.containingStateGroup.name,
-            ...exports.getComponentVariantNames(component),
+            ...(0, exports.getComponentVariantNames)(component),
         ].join('/');
     return component.name;
 };
@@ -242,14 +240,17 @@ const generateIconData = (components, downloadedAssets) => {
             return component.node_id === nodeId;
         });
         if (componentData) {
-            const name = exports.getIconComponentName(componentData);
+            const name = (0, exports.getIconComponentName)(componentData);
             const { description } = componentData;
             const data = {
                 componentName: `${name
                     // First replace all unsupported characters
                     .replace(/[^\d/A-Z_-\sa-z]+/g, '')
-                    .replace(/^icon\//, '')
+                    // Replace the sizes
+                    .replace(/^24px\//, '')
+                    .replace(/^(\d+px\/)(.+)/, '$2/$1')
                     .split(/[./_-\s]/)
+                    .filter(Boolean)
                     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
                     .join('')}Icon`,
                 figmaName: name,

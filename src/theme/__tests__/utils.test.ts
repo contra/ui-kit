@@ -14,10 +14,10 @@ describe('theme utils', () => {
       const expected = ['10px', '20px', '30px', '40px'];
 
       expect([...breakpoints]).toEqual(expected);
-      expect(breakpoints.sm).toEqual('10px');
-      expect(breakpoints.md).toEqual('20px');
-      expect(breakpoints.lg).toEqual('30px');
-      expect(breakpoints.xl).toEqual('40px');
+      expect(breakpoints.sm).toBe('10px');
+      expect(breakpoints.md).toBe('20px');
+      expect(breakpoints.lg).toBe('30px');
+      expect(breakpoints.xl).toBe('40px');
     });
   });
 

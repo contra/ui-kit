@@ -38,9 +38,9 @@ Object {
   },
   "codeBlock": Object {
     "regular": Object {
-      "fontFamily": "var(--font-family-mono)",
+      "fontFamily": "var(--font-mono)",
       "fontSize": "16px",
-      "fontWeight": "400",
+      "fontWeight": "600",
       "lineHeight": "1.5",
     },
   },

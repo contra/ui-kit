@@ -2,18 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 /* eslint-disable no-console */
-const fs = tslib_1.__importStar(require("fs"));
-const path = tslib_1.__importStar(require("path"));
-const util = tslib_1.__importStar(require("util"));
-const Figma = tslib_1.__importStar(require("figma-js"));
-const prettier_1 = tslib_1.__importDefault(require("prettier"));
+const fs = (0, tslib_1.__importStar)(require("fs"));
+const path = (0, tslib_1.__importStar)(require("path"));
+const util = (0, tslib_1.__importStar)(require("util"));
+const Figma = (0, tslib_1.__importStar)(require("figma-js"));
+const prettier_1 = (0, tslib_1.__importDefault)(require("prettier"));
 const figma_1 = require("./utils/figma");
-// eslint rule doesn't mix with `noPropertyAccessFromIndexSignature` yet.
-// https://github.com/typescript-eslint/typescript-eslint/issues/3104
-// eslint-disable-next-line @typescript-eslint/dot-notation
 const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
 const TEAM_ID = '752659572481085163';
-const FILE_ID = 'L8Te5meCiyl4s3qkbYLpYN';
+const FILE_ID = 'owwo3mjL0dCKJijKGaf1XB';
 const OUTPUT_DIR = '../../src/primitives/';
 const FILE_NAME = 'colorPrimitives.ts';
 const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
@@ -24,8 +21,8 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
     try {
         // Fetch team styles
         console.log('💅 Fetching team styles');
-        const teamStyles = await figma_1.getTeamStyles(client, TEAM_ID);
-        const colorStyles = teamStyles.filter(figma_1.filterStyleMetadata('FILL', FILE_ID));
+        const teamStyles = await (0, figma_1.getTeamStyles)(client, TEAM_ID);
+        const colorStyles = teamStyles.filter((0, figma_1.filterStyleMetadata)('FILL', FILE_ID));
         const files = new Map();
         colorStyles
             .sort((a, b) => {
@@ -47,7 +44,7 @@ const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
                 .map((node) => node?.document)
                 .filter(figma_1.isRectangleNode);
             for (const node of colorNodes) {
-                colors = figma_1.getNodeColorStyle(node, colors);
+                colors = (0, figma_1.getNodeColorStyle)(node, colors);
             }
         }
         // Fetch team styles

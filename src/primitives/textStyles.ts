@@ -41,9 +41,9 @@ export const textStyles = {
   codeBlock: {
     regular: {
       fontSize: '16px',
-      fontWeight: '400',
+      fontWeight: '600',
       lineHeight: '1.5',
-      fontFamily: 'var(--font-family-mono)',
+      fontFamily: 'var(--font-mono)',
     },
   },
   heading: {

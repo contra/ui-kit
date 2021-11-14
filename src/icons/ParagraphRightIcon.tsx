@@ -11,10 +11,8 @@ export const ParagraphRightIcon = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <path
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      d="M3.75 4.25h16.5M13.75 11.25h6.5M7.75 18.25h12.5"
+      d="M22 6H2V4.5h20V6zM22 12.75h-9v-1.5h9v1.5zM6 19.5h16V18H6v1.5z"
+      fill="currentColor"
     />
   </svg>
 );

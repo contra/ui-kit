@@ -1,0 +1,18 @@
+import type { SVGProps } from 'react';
+export const MoveDown16pxIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    focusable="false"
+    role="img"
+    {...props}
+  >
+    <path
+      d="M2 1h12v1H2V1zM12.98 8.313l-4.48 4.48v-9.46h-1v9.46l-4.48-4.48-.707.707L8 14.707l5.687-5.687-.707-.707z"
+      fill="currentColor"
+    />
+  </svg>
+);

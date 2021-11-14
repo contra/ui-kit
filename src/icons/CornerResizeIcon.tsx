@@ -10,46 +10,8 @@ export const CornerResizeIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <circle
-      cx={18.814}
-      cy={18.75}
-      r={1.25}
-      transform="rotate(-90 18.814 18.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={18.814}
-      cy={11.75}
-      r={1.25}
-      transform="rotate(-90 18.814 11.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={18.814}
-      cy={4.3}
-      r={1.25}
-      transform="rotate(-90 18.814 4.3)"
-      fill="currentColor"
-    />
-    <circle
-      cx={11.95}
-      cy={18.75}
-      r={1.25}
-      transform="rotate(-90 11.95 18.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={4.25}
-      cy={18.75}
-      r={1.25}
-      transform="rotate(-90 4.25 18.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={11.95}
-      cy={11.75}
-      r={1.25}
-      transform="rotate(-90 11.95 11.75)"
+    <path
+      d="M18.5 4a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM5.5 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM12 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM17 18.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM10.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM18.5 10.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
       fill="currentColor"
     />
   </svg>

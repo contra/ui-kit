@@ -10,46 +10,8 @@ export const MoveIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <circle
-      cx={15.113}
-      cy={19.75}
-      r={1.25}
-      transform="rotate(-90 15.113 19.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={15.113}
-      cy={12.524}
-      r={1.25}
-      transform="rotate(-90 15.113 12.524)"
-      fill="currentColor"
-    />
-    <circle
-      cx={15.113}
-      cy={5.3}
-      r={1.25}
-      transform="rotate(-90 15.113 5.3)"
-      fill="currentColor"
-    />
-    <circle
-      cx={9.25}
-      cy={19.75}
-      r={1.25}
-      transform="rotate(-90 9.25 19.75)"
-      fill="currentColor"
-    />
-    <circle
-      cx={9.25}
-      cy={12.524}
-      r={1.25}
-      transform="rotate(-90 9.25 12.524)"
-      fill="currentColor"
-    />
-    <circle
-      cx={9.25}
-      cy={5.3}
-      r={1.25}
-      transform="rotate(-90 9.25 5.3)"
+    <path
+      d="M7 5.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM8.5 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM15.5 17a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM15.5 4a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM7 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM15.5 10.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
       fill="currentColor"
     />
   </svg>

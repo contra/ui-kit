@@ -12,12 +12,9 @@ import {
   isRectangleNode,
 } from './utils/figma';
 
-// eslint rule doesn't mix with `noPropertyAccessFromIndexSignature` yet.
-// https://github.com/typescript-eslint/typescript-eslint/issues/3104
-// eslint-disable-next-line @typescript-eslint/dot-notation
 const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
 const TEAM_ID = '752659572481085163';
-const FILE_ID = 'L8Te5meCiyl4s3qkbYLpYN';
+const FILE_ID = 'owwo3mjL0dCKJijKGaf1XB';
 const OUTPUT_DIR = '../../src/primitives/';
 const FILE_NAME = 'colorPrimitives.ts';
 const OUTPUT_FILE = path.resolve(__dirname, OUTPUT_DIR, FILE_NAME);
