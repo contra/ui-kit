@@ -9,8 +9,9 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "es2020",
+    "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -24,7 +25,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2018"
+    "target": "es2019"
   },
   "include": ["src"],
   "exclude": ["node_modules"]

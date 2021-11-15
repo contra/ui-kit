@@ -1,4 +1,5 @@
 node_modules
+bin
 dist
 commitlint.config.js
 prettier.config.js
