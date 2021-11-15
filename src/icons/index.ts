@@ -1,4 +1,4 @@
-// Generated at Sun, 14 Nov 2021 18:38:51 GMT
+// Generated at Mon, 15 Nov 2021 16:20:39 GMT
 export { Add16pxIcon } from './Add16pxIcon';
 export { Administrative16pxIcon } from './Administrative16pxIcon';
 export { AlertCircle16pxIcon } from './AlertCircle16pxIcon';
@@ -46,6 +46,7 @@ export { ExternalLink16pxIcon } from './ExternalLink16pxIcon';
 export { ExternalLinkAlt16pxIcon } from './ExternalLinkAlt16pxIcon';
 export { Eye16pxIcon } from './Eye16pxIcon';
 export { EyeOff16pxIcon } from './EyeOff16pxIcon';
+export { Film16pxIcon } from './Film16pxIcon';
 export { Filter16pxIcon } from './Filter16pxIcon';
 export { FilterAlt16pxIcon } from './FilterAlt16pxIcon';
 export { Flag16pxIcon } from './Flag16pxIcon';
@@ -181,6 +182,7 @@ export { ExternalLinkIcon } from './ExternalLinkIcon';
 export { ExternalLinkAltIcon } from './ExternalLinkAltIcon';
 export { EyeIcon } from './EyeIcon';
 export { EyeOffIcon } from './EyeOffIcon';
+export { FilmIcon } from './FilmIcon';
 export { FilterIcon } from './FilterIcon';
 export { FilterAltIcon } from './FilterAltIcon';
 export { FlagIcon } from './FlagIcon';
