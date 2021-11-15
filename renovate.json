@@ -1,0 +1,14 @@
+{
+  "dependencyDashboard": true,
+  "enabledManagers": ["npm"],
+  "extends": ["config:base"],
+  "ignoreDeps": [],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "addLabels": ["self-review"]
+    }
+  ],
+  "rangeStrategy": "bump"
+}
