@@ -10,5 +10,5 @@
       "addLabels": ["self-review"]
     }
   ],
-  "rangeStrategy": "pin"
+  "rangeStrategy": "bump"
 }
