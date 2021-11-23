@@ -84,5 +84,7 @@
   "peerDependencies": {
     "react": "^16.14.0 || ^17.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@stitches/react": "^1.2.5"
+  }
 }
