@@ -36,12 +36,19 @@
     "generate:textStyles": "node ./scripts/dist/generateTextStyles",
     "lint": "eslint src",
     "prepare": "husky install",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "storybook": "start-storybook -p 6007",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@skypack/package-check": "^0.2.2",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
@@ -53,6 +60,7 @@
     "@types/prettier": "^2.4.2",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.3",
     "camelcase": "^6.2.0",
     "esbuild": "^0.13.13",
     "eslint": "^7.32.0",
