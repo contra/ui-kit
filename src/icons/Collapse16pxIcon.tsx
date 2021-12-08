@@ -12,7 +12,7 @@ export const Collapse16pxIcon = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M15.091 1.218l-5.028 5.029m0 0h5.028m-5.028 0V1.218M1.353 14.956l5.028-5.029m0 0H1.353m5.028 0v5.029"
-      stroke="#000"
+      stroke="currentColor"
       strokeWidth={0.999}
     />
   </svg>

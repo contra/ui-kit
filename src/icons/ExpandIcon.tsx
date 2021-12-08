@@ -12,7 +12,7 @@ export const ExpandIcon = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M13.594 10.87l7.543-7.543m0 0h-7.543m7.543 0v7.543M11.073 13.39l-7.542 7.543m0 0h7.542m-7.542 0v-7.542"
-      stroke="#000"
+      stroke="currentColor"
       strokeWidth={1.5}
     />
   </svg>
