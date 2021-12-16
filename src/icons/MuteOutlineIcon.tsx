@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-export const MuteIcon = (props: SVGProps<SVGSVGElement>) => (
+export const MuteOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"

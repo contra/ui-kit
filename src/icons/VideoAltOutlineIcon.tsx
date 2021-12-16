@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-export const VideoAltIcon = (props: SVGProps<SVGSVGElement>) => (
+export const VideoAltOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"
