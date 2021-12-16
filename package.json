@@ -29,6 +29,7 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:cjs": "node ./bin/build-cjs.js",
     "build:esm": "yarn tsc --project tsconfig.build.json",
+    "build:storybook": "build-storybook",
     "check:package": "yarn package-check",
     "check:tsc": "yarn tsc --noEmit",
     "generate:colors": "node ./scripts/dist/generateColors",
@@ -36,9 +37,8 @@
     "generate:textStyles": "node ./scripts/dist/generateTextStyles",
     "lint": "eslint src",
     "prepare": "husky install",
-    "test": "yarn jest",
     "storybook": "start-storybook -p 6007",
-    "build-storybook": "build-storybook"
+    "test": "yarn jest"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
