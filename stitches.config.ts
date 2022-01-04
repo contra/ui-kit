@@ -11,13 +11,9 @@ export const {
   createTheme,
   config,
 } = createStitches({
-  media: {
-    bp1: '(min-width: 480px)',
-  },
+  media: {},
   theme: {
     colors: colorPrimitives,
   },
-  utils: {
-    marginX: (value: string) => ({ marginLeft: value, marginRight: value }),
-  },
+  utils: {},
 });
