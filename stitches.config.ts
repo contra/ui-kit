@@ -18,6 +18,6 @@ export const {
     bp1: '(min-width: 480px)',
   },
   utils: {
-    marginX: (value) => ({ marginLeft: value, marginRight: value }),
+    marginX: (value: string) => ({ marginLeft: value, marginRight: value }),
   },
 });
