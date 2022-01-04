@@ -11,11 +11,11 @@ export const {
   createTheme,
   config,
 } = createStitches({
-  theme: {
-    colors: colorPrimitives,
-  },
   media: {
     bp1: '(min-width: 480px)',
+  },
+  theme: {
+    colors: colorPrimitives,
   },
   utils: {
     marginX: (value: string) => ({ marginLeft: value, marginRight: value }),
