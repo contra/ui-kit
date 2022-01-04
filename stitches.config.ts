@@ -1,4 +1,5 @@
 import { createStitches } from '@stitches/react';
+import { colorPrimitives } from './src/primitives/colorPrimitives';
 
 export const {
   styled,
@@ -11,10 +12,7 @@ export const {
   config,
 } = createStitches({
   theme: {
-    colors: {
-      gray400: 'gainsboro',
-      gray500: 'lightgray',
-    },
+    colors: colorPrimitives,
   },
   media: {
     bp1: '(min-width: 480px)',
