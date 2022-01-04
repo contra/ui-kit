@@ -4,7 +4,6 @@ dist
 commitlint.config.js
 prettier.config.js
 jest.config.js
-stitches.config.ts
 /src/icons
 !/src/icons/index.ts
 /src/primitives/colorPrimitives.ts
