@@ -4,16 +4,18 @@ import { Checkbox } from '../Checkbox';
 const Wrapper = styled('div', {
   display: 'flex',
   flexFlow: 'row wrap',
+  gap: '$16',
   width: '100%',
 });
 
-export const CheckboxStory = () => (
+export const AllCheckboxes = () => (
   <Wrapper>
-    <Checkbox>Test</Checkbox>
+    <Checkbox disabled />
+    <Checkbox />
   </Wrapper>
 );
 
 export default {
-  component: CheckboxStory,
+  component: AllCheckboxes,
   title: 'Checkbox',
 };
