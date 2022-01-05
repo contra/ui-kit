@@ -1,3 +1,4 @@
+import type * as Stitches from '@stitches/react';
 import { createStitches } from '@stitches/react';
 import { colorPrimitives } from './src/primitives/colorPrimitives';
 
@@ -26,5 +27,10 @@ export const {
       128: '128px',
     },
   },
-  utils: {},
+  utils: {
+    mx: (value: Stitches.ScaleValue<'space'>) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+  },
 });
