@@ -12,8 +12,8 @@ export const CheckboxStates = () => (
   <Wrapper>
     <Checkbox isDisabled />
     <Checkbox />
-    <Checkbox autoFocus defaultSelected />
     <Checkbox defaultSelected />
+    <Checkbox autoFocus defaultSelected />
     <Checkbox defaultSelected isDisabled />
     <Checkbox isIndeterminate />
     <Checkbox validationState="invalid" />
