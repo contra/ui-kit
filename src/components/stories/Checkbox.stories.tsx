@@ -8,7 +8,7 @@ const Wrapper = styled('div', {
   width: '100%',
 });
 
-export const AllCheckboxes = () => (
+export const CheckboxStates = () => (
   <Wrapper>
     <Checkbox isDisabled />
     <Checkbox />
@@ -21,6 +21,6 @@ export const AllCheckboxes = () => (
 );
 
 export default {
-  component: AllCheckboxes,
+  component: CheckboxStates,
   title: 'Checkbox',
 };
