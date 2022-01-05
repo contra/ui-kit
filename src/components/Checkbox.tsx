@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
 
-export const Checkbox = (props: { children: HTMLElement }) => {
+export const Checkbox = (props: { children: string }) => {
   const state = useToggleState(props);
   const ref = useRef<HTMLInputElement>(null);
   const { inputProps } = useCheckbox(props, state, ref);
