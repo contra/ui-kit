@@ -15,8 +15,8 @@ const IconContainer = styled('div', {
   color: '$brandBlack',
   backgroundColor: '$brandWhite',
   borderRadius: '20px',
-  padding: '16px',
-  margin: '24px',
+  padding: '$16',
+  margin: '$24',
   boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.16)',
   '& > *': {
     marginBottom: '8px',
