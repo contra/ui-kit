@@ -65,6 +65,7 @@ const IconContainer = styled('div', {
 });
 
 export const Checkbox = (props: {
+  'aria-label': string;
   autoFocus?: boolean;
   children?: string;
   defaultSelected?: boolean;
@@ -78,7 +79,7 @@ export const Checkbox = (props: {
 
   return (
     <Label>
-      <Input {...inputProps} ref={ref} />
+      <Input {...inputProps} aria-label={props['aria-label']} ref={ref} />
       {state.isSelected && (
         <IconContainer>
           <Check16pxIcon />

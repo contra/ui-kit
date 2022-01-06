@@ -10,13 +10,13 @@ const Wrapper = styled('div', {
 
 export const CheckboxStates = () => (
   <Wrapper>
-    <Checkbox isDisabled />
-    <Checkbox />
-    <Checkbox defaultSelected />
-    <Checkbox autoFocus defaultSelected />
-    <Checkbox defaultSelected isDisabled />
-    <Checkbox isIndeterminate />
-    <Checkbox validationState="invalid" />
+    <Checkbox aria-label="test" isDisabled />
+    <Checkbox aria-label="test" />
+    <Checkbox aria-label="test" defaultSelected />
+    <Checkbox aria-label="test" autoFocus defaultSelected />
+    <Checkbox aria-label="test" defaultSelected isDisabled />
+    <Checkbox aria-label="test" isIndeterminate />
+    <Checkbox aria-label="test" validationState="invalid" />
   </Wrapper>
 );
 
