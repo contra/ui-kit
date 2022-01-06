@@ -8,7 +8,13 @@ const sharedConfig = {
   platform: 'node',
   sourcemap: true,
   bundle: true,
-  external: ['react', 'react-dom', '@stitches/react'],
+  external: [
+    'react',
+    'react-dom',
+    '@stitches/react',
+    'react-aria',
+    'react-stately',
+  ],
   target: ['node12'],
   inject: ['./bin/util/react-shim.js'],
 };
