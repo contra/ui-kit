@@ -1,3 +1,4 @@
+import type { ChangeEvent } from 'react';
 import { useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
@@ -77,9 +78,19 @@ export const Checkbox = (props: {
   const ref = useRef<HTMLInputElement>(null);
   const { inputProps } = useCheckbox(props, state, ref);
 
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const checked = event.target.checked;
+    state.setSelected(checked);
+  };
+
   return (
     <Label>
-      <Input {...inputProps} aria-label={props['aria-label']} ref={ref} />
+      <Input
+        {...inputProps}
+        aria-label={props['aria-label']}
+        onChange={onChange}
+        ref={ref}
+      />
       {state.isSelected && (
         <IconContainer>
           <Check16pxIcon />
