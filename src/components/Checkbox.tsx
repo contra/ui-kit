@@ -1,5 +1,7 @@
+import { gsap } from 'gsap';
+import type { GSAPTimeline } from 'gsap/types';
 import type { ChangeEvent } from 'react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { styled } from '../../stitches.config';
@@ -76,11 +78,32 @@ export const Checkbox = (props: {
 }) => {
   const state = useToggleState(props);
   const ref = useRef<HTMLInputElement>(null);
+  const checkedTl = useRef<GSAPTimeline>(
+    gsap.timeline({
+      paused: true,
+    })
+  );
   const { inputProps } = useCheckbox(props, state, ref);
+
+  useEffect(() => {
+    checkedTl.current
+      .to(ref.current, {
+        duration: 0.2,
+        ease: 'expo.easeIn',
+        scale: 1.2,
+      })
+      .to(ref.current, {
+        duration: 0.2,
+        ease: 'expo.easeOut',
+        scale: 1,
+      });
+  }, []);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
     state.setSelected(checked);
+
+    checkedTl.current.play(0);
   };
 
   return (
