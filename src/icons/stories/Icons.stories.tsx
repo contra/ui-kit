@@ -1,5 +1,5 @@
 import * as Icons from '../.';
-import { styled } from '@stitches/react';
+import { styled } from '../../../stitches.config';
 
 const IconsWrapper = styled('div', {
   display: 'flex',
@@ -12,11 +12,11 @@ const IconContainer = styled('div', {
   flexFlow: 'column',
   alignItems: 'center',
   fontSize: '1rem',
-  color: 'Black',
-  backgroundColor: 'White',
+  color: '$brandBlack',
+  backgroundColor: '$brandWhite',
   borderRadius: '20px',
-  padding: '16px',
-  margin: '24px',
+  padding: '$16',
+  margin: '$24',
   boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.16)',
   '& > *': {
     marginBottom: '8px',
