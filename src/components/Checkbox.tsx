@@ -1,5 +1,4 @@
 import { gsap } from 'gsap';
-import type { GSAPTimeline } from 'gsap/types';
 import type { ChangeEvent } from 'react';
 import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
