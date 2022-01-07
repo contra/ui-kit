@@ -14,6 +14,7 @@ const sharedConfig = {
     '@stitches/react',
     'react-aria',
     'react-stately',
+    'gsap',
   ],
   target: ['node12'],
   inject: ['./bin/util/react-shim.js'],
