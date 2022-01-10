@@ -2,7 +2,10 @@ import type { SVGProps } from 'react';
 import { styled } from '../../stitches.config';
 
 const Path = styled('path', {
-  transition: 'stroke-dashoffset 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+  'input:checked ~ div &': {
+    transition: 'stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1)',
+  },
+  transition: 'stroke-dashoffset 0.2s cubic-bezier(0.11, 0, 0.5, 0)',
 });
 
 export const CheckIcon = (props: SVGProps<SVGSVGElement>) => (
