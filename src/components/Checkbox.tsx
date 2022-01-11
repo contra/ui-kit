@@ -82,10 +82,13 @@ export const Checkbox = ({
   CustomCheckboxProps &
   ToggleProps) => {
   const ref = useRef<HTMLInputElement>(null);
-  const state = useToggleState({ defaultSelected, validationState });
+  const { isSelected, toggle, setSelected } = useToggleState({
+    defaultSelected,
+    validationState,
+  });
   const { inputProps } = useCheckbox(
     { isIndeterminate, ...restProps },
-    state,
+    { isSelected, setSelected, toggle },
     ref
   );
   const checkedTl = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
@@ -106,8 +109,7 @@ export const Checkbox = ({
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
-    state.setSelected(checked);
-
+    setSelected(checked);
     checkedTl.current.play(0);
   };
 
@@ -115,7 +117,7 @@ export const Checkbox = ({
     <Label>
       <Input {...inputProps} {...restProps} onChange={onChange} ref={ref} />
       <IconContainer>
-        <CheckIcon strokeDashoffset={state.isSelected ? '' : '21'} />
+        <CheckIcon strokeDashoffset={isSelected ? '' : '21'} />
       </IconContainer>
       {text}
     </Label>
