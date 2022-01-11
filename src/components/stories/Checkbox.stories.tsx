@@ -24,7 +24,7 @@ export const CheckboxStates = () => (
       disabled
     />
     <Checkbox aria-label="test" isIndeterminate />
-    <Checkbox aria-label="test" validationState="invalid" />
+    <Checkbox aria-label="test" required validationState="invalid" />
   </Wrapper>
 );
 
