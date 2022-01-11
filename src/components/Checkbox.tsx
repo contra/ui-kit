@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { styled } from '../../stitches.config';
-import { Check16pxIcon } from '../icons';
+import { CheckIcon } from '../animationIcons/CheckIcon';
 
 const Label = styled('label', {
   '& input:checked:disabled + div': {
@@ -87,12 +87,12 @@ export const Checkbox = (props: {
   useEffect(() => {
     checkedTl.current
       .to(ref.current, {
-        duration: 0.2,
+        duration: 0.1,
         ease: 'expo.easeIn',
         scale: 1.2,
       })
       .to(ref.current, {
-        duration: 0.2,
+        duration: 0.1,
         ease: 'expo.easeOut',
         scale: 1,
       });
@@ -113,11 +113,9 @@ export const Checkbox = (props: {
         onChange={onChange}
         ref={ref}
       />
-      {state.isSelected && (
-        <IconContainer>
-          <Check16pxIcon />
-        </IconContainer>
-      )}
+      <IconContainer>
+        <CheckIcon strokeDashoffset={state.isSelected ? '' : '21'} />
+      </IconContainer>
       {props.children}
     </Label>
   );
