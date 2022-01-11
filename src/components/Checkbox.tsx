@@ -83,7 +83,11 @@ export const Checkbox = ({
   ToggleProps) => {
   const ref = useRef<HTMLInputElement>(null);
   const state = useToggleState({ defaultSelected, validationState });
-  const { inputProps } = useCheckbox({ isIndeterminate }, state, ref);
+  const { inputProps } = useCheckbox(
+    { isIndeterminate, ...restProps },
+    state,
+    ref
+  );
   const checkedTl = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
 
   useEffect(() => {
