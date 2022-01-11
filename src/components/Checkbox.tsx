@@ -94,12 +94,12 @@ export const Checkbox = ({
     checkedTl.current
       .to(ref.current, {
         duration: 0.1,
-        ease: 'expo.easeIn',
-        scale: 1.2,
+        ease: 'quad.easeIn',
+        scale: 0.9,
       })
       .to(ref.current, {
         duration: 0.1,
-        ease: 'expo.easeOut',
+        ease: 'quad.easeOut',
         scale: 1,
       });
   }, []);
