@@ -45,7 +45,7 @@ const Input = styled('input', {
     transform: 'translate(-50%, -50%)',
     width: '12px',
   },
-  '&[aria-invalid="true"]': {
+  '&:invalid': {
     borderColor: '$uiErrorRegular',
   },
   appearance: 'none',
