@@ -1,5 +1,6 @@
+import type { CheckboxProps, ToggleProps } from '@react-types/checkbox';
 import { gsap } from 'gsap';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, ComponentPropsWithRef } from 'react';
 import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
@@ -66,23 +67,24 @@ const IconContainer = styled('div', {
   transform: 'translate(-50%, -50%)',
 });
 
-export const Checkbox = (props: {
-  'aria-label': string;
-  autoFocus?: boolean;
-  children?: string;
-  defaultSelected?: boolean;
-  isDisabled?: boolean;
-  isIndeterminate?: boolean;
-  validationState?: 'invalid' | 'valid';
-}) => {
-  const state = useToggleState(props);
+type CustomCheckboxProps = {
+  text?: string;
+};
+
+export const Checkbox = ({
+  validationState,
+  text,
+  defaultSelected,
+  isIndeterminate,
+  ...restProps
+}: CheckboxProps &
+  ComponentPropsWithRef<'input'> &
+  CustomCheckboxProps &
+  ToggleProps) => {
   const ref = useRef<HTMLInputElement>(null);
-  const checkedTl = useRef<GSAPTimeline>(
-    gsap.timeline({
-      paused: true,
-    })
-  );
-  const { inputProps } = useCheckbox(props, state, ref);
+  const state = useToggleState({ defaultSelected, validationState });
+  const { inputProps } = useCheckbox({ isIndeterminate }, state, ref);
+  const checkedTl = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
 
   useEffect(() => {
     checkedTl.current
@@ -107,16 +109,11 @@ export const Checkbox = (props: {
 
   return (
     <Label>
-      <Input
-        {...inputProps}
-        aria-label={props['aria-label']}
-        onChange={onChange}
-        ref={ref}
-      />
+      <Input {...inputProps} {...restProps} onChange={onChange} ref={ref} />
       <IconContainer>
         <CheckIcon strokeDashoffset={state.isSelected ? '' : '21'} />
       </IconContainer>
-      {props.children}
+      {text}
     </Label>
   );
 };
