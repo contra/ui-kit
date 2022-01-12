@@ -1,6 +1,6 @@
 import type { CheckboxProps, ToggleProps } from '@react-types/checkbox';
 import { gsap } from 'gsap';
-import type { ChangeEvent, ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
@@ -107,15 +107,13 @@ export const Checkbox = ({
       });
   }, []);
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const checked = event.target.checked;
-    setSelected(checked);
+  useEffect(() => {
     checkedTl.current.play(0);
-  };
+  }, [isSelected]);
 
   return (
     <Label>
-      <Input {...inputProps} {...restProps} onChange={onChange} ref={ref} />
+      <Input {...inputProps} {...restProps} ref={ref} />
       <IconContainer>
         <CheckIcon strokeDashoffset={isSelected ? '' : '21'} />
       </IconContainer>
