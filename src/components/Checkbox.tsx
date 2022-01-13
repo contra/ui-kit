@@ -1,6 +1,9 @@
-import type { CheckboxProps, ToggleProps } from '@react-types/checkbox';
+import type {
+  CheckboxProps as RTCheckboxProps,
+  ToggleProps,
+} from '@react-types/checkbox';
 import { gsap } from 'gsap';
-import type { ComponentPropsWithRef } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
@@ -67,19 +70,18 @@ const IconContainer = styled('div', {
   transform: 'translate(-50%, -50%)',
 });
 
-type CustomCheckboxProps = {
-  text?: string;
+type CheckboxProps = RTCheckboxProps & {
+  label?: ReactNode;
 };
-
 export const Checkbox = ({
   validationState,
-  text,
+  label,
   defaultSelected,
   isIndeterminate,
   ...restProps
 }: CheckboxProps &
   ComponentPropsWithRef<'input'> &
-  CustomCheckboxProps &
+  RTCheckboxProps &
   ToggleProps) => {
   const ref = useRef<HTMLInputElement>(null);
   const { isSelected, toggle, setSelected } = useToggleState({
@@ -117,7 +119,7 @@ export const Checkbox = ({
       <IconContainer>
         <CheckIcon strokeDashoffset={isSelected ? '' : '21'} />
       </IconContainer>
-      {text}
+      {label}
     </Label>
   );
 };
