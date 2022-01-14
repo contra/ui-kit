@@ -101,11 +101,18 @@ export const Checkbox = ({
   );
   const [isPressed, setIsPressed] = useState(false);
 
+  const handleMouseDown = () => {
+    if (disabled) return;
+    setIsPressed(true);
+  };
+
+  const handleMouseUp = () => {
+    if (disabled) return;
+    setIsPressed(false);
+  };
+
   return (
-    <Label
-      onMouseDown={() => setIsPressed(true)}
-      onMouseUp={() => setIsPressed(false)}
-    >
+    <Label onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
       <Input
         isPressed={isPressed}
         {...inputProps}
