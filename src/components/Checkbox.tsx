@@ -2,13 +2,13 @@ import type {
   CheckboxProps as RTCheckboxProps,
   ToggleProps,
 } from '@react-types/checkbox';
-import { gsap } from 'gsap';
 import type { ComponentPropsWithRef, ReactNode } from 'react';
-import { useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useCheckbox } from 'react-aria';
 import { useToggleState } from 'react-stately';
 import { styled } from '../../stitches.config';
 import { CheckIcon } from '../animationIcons/CheckIcon';
+import { easeOutExpo } from '../primitives/animation';
 
 const Label = styled('label', {
   '& input:checked:disabled + div': {
@@ -48,9 +48,6 @@ const Input = styled('input', {
     transform: 'translate(-50%, -50%)',
     width: '12px',
   },
-  '&:invalid': {
-    borderColor: '$uiErrorRegular',
-  },
   appearance: 'none',
   backgroundColor: '$brandWhite',
   borderColor: '$gray50',
@@ -60,6 +57,15 @@ const Input = styled('input', {
   height: '24px',
   margin: '0',
   position: 'relative',
+  transform: 'scale(1)',
+  transition: `transform 0.2s ${easeOutExpo}`,
+  variants: {
+    isPressed: {
+      true: {
+        transform: 'scale(0.9)',
+      },
+    },
+  },
   width: '24px',
 });
 
@@ -93,31 +99,19 @@ export const Checkbox = ({
     { isSelected, setSelected, toggle },
     ref
   );
-  const checkedTl = useRef<GSAPTimeline>(gsap.timeline({ paused: true }));
-
-  useEffect(() => {
-    checkedTl.current
-      .to(ref.current, {
-        duration: 0.1,
-        ease: 'quad.easeIn',
-        scale: 0.9,
-      })
-      .to(ref.current, {
-        duration: 0.1,
-        ease: 'quad.easeOut',
-        scale: 1,
-      });
-  }, []);
-
-  useEffect(() => {
-    checkedTl.current.play(0);
-  }, [isSelected]);
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <Label>
-      <Input {...inputProps} {...restProps} ref={ref} />
+    <Label
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+    >
+      <Input isPressed={isPressed} {...inputProps} {...restProps} ref={ref} />
       <IconContainer>
-        <CheckIcon strokeDashoffset={isSelected ? '' : '21'} />
+        <CheckIcon
+          isChecked={isSelected}
+          strokeDashoffset={isSelected ? '' : '21'}
+        />
       </IconContainer>
       {label}
     </Label>
