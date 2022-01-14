@@ -84,7 +84,7 @@ export const Checkbox = ({
   label,
   defaultSelected,
   isIndeterminate,
-  ...restProps
+  disabled,
 }: CheckboxProps &
   ComponentPropsWithRef<'input'> &
   RTCheckboxProps &
@@ -95,7 +95,7 @@ export const Checkbox = ({
     validationState,
   });
   const { inputProps } = useCheckbox(
-    { isIndeterminate, ...restProps },
+    { isIndeterminate },
     { isSelected, setSelected, toggle },
     ref
   );
@@ -106,7 +106,12 @@ export const Checkbox = ({
       onMouseDown={() => setIsPressed(true)}
       onMouseUp={() => setIsPressed(false)}
     >
-      <Input isPressed={isPressed} {...inputProps} {...restProps} ref={ref} />
+      <Input
+        isPressed={isPressed}
+        {...inputProps}
+        disabled={disabled}
+        ref={ref}
+      />
       <IconContainer>
         <CheckIcon
           isChecked={isSelected}
