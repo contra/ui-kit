@@ -1,3 +1,4 @@
+import 'inter-ui/inter.css';
 import type * as Stitches from '@stitches/react';
 import { createStitches } from '@stitches/react';
 import { colorPrimitives } from './src/primitives/colorPrimitives';
@@ -50,3 +51,11 @@ export const {
     }),
   },
 });
+
+// Create and call globalCss to add the styles to the global stylesheet
+globalCss({
+  html: {
+    fontFamily: '"Inter", "system-ui"',
+    padding: '$12',
+  },
+})();
