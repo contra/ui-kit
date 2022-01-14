@@ -12,7 +12,13 @@ export const {
   createTheme,
   config,
 } = createStitches({
-  media: {},
+  media: {
+    lg: '992px',
+    md: '768px',
+    sm: '576px',
+    xl: '1200px',
+    xxl: '1440px',
+  },
   theme: {
     borderStyles: {
       solid: 'solid',
@@ -23,6 +29,7 @@ export const {
     colors: colorPrimitives,
     radii: {
       4: '4px',
+      16: '16px',
     },
     space: {
       4: '4px',
