@@ -56,10 +56,10 @@ const Body = styled('div', {
   width: '100%',
 });
 
-export const Toast = ({ type, isRelative }: ToastProps) => {
+export const Toast = ({ message, type, isRelative }: ToastProps) => {
   return (
     <Container isRelative={isRelative}>
-      <Body type={type} />
+      <Body type={type}>{message}</Body>
     </Container>
   );
 };
