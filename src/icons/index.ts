@@ -326,3 +326,4 @@ export { SocialVimeoIcon } from './SocialVimeoIcon';
 export { SocialVkIcon } from './SocialVkIcon';
 export { SocialWorkingNotWorkingIcon } from './SocialWorkingNotWorkingIcon';
 export { SocialYoutubeIcon } from './SocialYoutubeIcon';
+export { CoverPlaceholderIcon } from './CoverPlaceholder';
