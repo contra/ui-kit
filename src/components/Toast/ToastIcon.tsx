@@ -11,7 +11,10 @@ type ToastIconProps = {
   type: Toast['type'];
 };
 
-const getIcon = (type: ToastIconProps['type']): JSX.Element => {
+// eslint-disable-next-line no-warning-comments
+// TODO: Figure out how to set type to JSX.Element
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getIcon = (type: ToastIconProps['type']): any => {
   const svgProps = {
     focusable: false,
     height: '24px',
