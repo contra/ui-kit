@@ -1,4 +1,5 @@
 import { styled } from '../../../stitches.config';
+import { CloseIcon } from '../../icons';
 import { ToastIcon } from './ToastIcon';
 import type { Toast as ToastProps } from './types';
 
@@ -20,10 +21,11 @@ const Container = styled('div', {
 });
 
 const Body = styled('div', {
+  alignItems: 'flex-start',
   borderRadius: '$16',
   display: 'flex',
   flexDirection: 'row',
-  maxWidth: '448px',
+  maxWidth: '440px',
   padding: '$16',
   position: 'relative',
   textStyle: 'body:regular',
@@ -59,7 +61,7 @@ const Body = styled('div', {
 });
 
 const Message = styled('span', {
-  marginLeft: '$8',
+  marginLeft: '$16',
   variants: {
     hideIcon: {
       true: {
@@ -68,6 +70,19 @@ const Message = styled('span', {
     },
   },
 });
+
+const DismissButton = styled('button', {
+  buttonReset: true,
+  color: '$brandWhite',
+  display: 'block',
+  lineHeight: 1,
+  marginLeft: '$16',
+});
+
+const handleDismiss = () => {
+  // eslint-disable-next-line no-alert
+  alert('TODO: Handle dismiss');
+};
 
 export const Toast = ({
   hideIcon,
@@ -81,6 +96,14 @@ export const Toast = ({
       <Body type={type}>
         {hideIcon ? null : <ToastIcon icon={icon} type={type} />}
         <Message hideIcon={hideIcon}>{message}</Message>
+        <DismissButton onClick={handleDismiss}>
+          <CloseIcon
+            focusable={false}
+            height={'24px'}
+            role={'img'}
+            width={'24px'}
+          />
+        </DismissButton>
       </Body>
     </Container>
   );
