@@ -8,9 +8,15 @@ import { textStyles } from '../../src/primitives/textStyles';
 
 export const getStitchesTextStyle = (styleName: string) => {
   const split = styleName.split(':');
-  const name = split[0];
-  const style = split[1];
-  const textStyle = textStyles[name][style];
 
-  return textStyle;
+  if (split[0] && split[1]) {
+    const name = split[0];
+    const style = split[1];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const textStyle = (textStyles as any)[name][style];
+
+    return textStyle;
+  }
+
+  return undefined;
 };
