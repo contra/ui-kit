@@ -10,10 +10,54 @@ const Wrapper = styled('div', {
 
 export const ToastStory = () => (
   <Wrapper>
-    <Toast isRelative message="This is an error toast." type="error" />
-    <Toast isRelative message="This is an info toast." type="info" />
-    <Toast isRelative message="This is an warning toast." type="warning" />
-    <Toast isRelative message="This is an success toast." type="success" />
+    <Toast
+      aria-label="Error toast"
+      ariaLive="polite"
+      createdAt={Date.now()}
+      id="error-toast"
+      isRelative
+      message="This is an error toast. Lorem ipsum dolor sit amet."
+      pauseDuration={2_000}
+      role="status"
+      type="error"
+      visible
+    />
+    <Toast
+      aria-label="Error toast"
+      ariaLive="polite"
+      createdAt={Date.now()}
+      id="error-toast"
+      isRelative
+      message="This is an informational message. Lorem ipsum dolor sit amet."
+      pauseDuration={2_000}
+      role="status"
+      type="info"
+      visible
+    />
+    <Toast
+      aria-label="Error toast"
+      ariaLive="polite"
+      createdAt={Date.now()}
+      id="error-toast"
+      isRelative
+      message="This is an warning toast. Lorem ipsum dolor sit amet."
+      pauseDuration={2_000}
+      role="status"
+      type="warning"
+      visible
+    />
+    <Toast
+      aria-label="Error toast"
+      ariaLive="polite"
+      createdAt={Date.now()}
+      id="error-toast"
+      isRelative
+      message="This is an success toast. Lorem ipsum dolor sit amet."
+      pauseDuration={2_000}
+      role="status"
+      type="success"
+      visible
+    />
   </Wrapper>
 );
 
