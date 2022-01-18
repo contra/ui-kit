@@ -1,4 +1,5 @@
 import { styled } from '../../../stitches.config';
+import { ToastIcon } from './ToastIcon';
 import type { Toast as ToastProps } from './types';
 
 const Container = styled('div', {
@@ -23,8 +24,9 @@ const Body = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   maxWidth: '448px',
-  padding: '$16 $16 $16 $24',
+  padding: '$16',
   position: 'relative',
+  textStyle: 'body:regular',
   variants: {
     type: {
       content: {
@@ -56,10 +58,30 @@ const Body = styled('div', {
   width: '100%',
 });
 
-export const Toast = ({ message, type, isRelative }: ToastProps) => {
+const Message = styled('span', {
+  marginLeft: '$8',
+  variants: {
+    hideIcon: {
+      true: {
+        marginLeft: '0',
+      },
+    },
+  },
+});
+
+export const Toast = ({
+  hideIcon,
+  icon,
+  message,
+  type,
+  isRelative,
+}: ToastProps) => {
   return (
     <Container isRelative={isRelative}>
-      <Body type={type}>{message}</Body>
+      <Body type={type}>
+        {hideIcon ? null : <ToastIcon icon={icon} type={type} />}
+        <Message hideIcon={hideIcon}>{message}</Message>
+      </Body>
     </Container>
   );
 };
