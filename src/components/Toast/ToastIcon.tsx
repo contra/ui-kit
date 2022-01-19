@@ -12,7 +12,7 @@ type ToastIconProps = {
 };
 
 // eslint-disable-next-line no-warning-comments
-// TODO: Figure out how to set type to JSX.Element
+// TODO: Figure out how to set type to JSX.Element. Is this something that needs to happen in the icon automation tool?
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getIcon = (type: ToastIconProps['type']): any => {
   const svgProps = {
