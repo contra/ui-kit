@@ -1,6 +1,7 @@
 import 'inter-ui/inter.css';
 import type * as Stitches from '@stitches/react';
 import { createStitches } from '@stitches/react';
+import type { TypographicStyleString } from './scripts/src/getStitchesTextStyle';
 import { getStitchesTextStyle } from './scripts/src/getStitchesTextStyle';
 import { colorPrimitives } from './src/primitives/colorPrimitives';
 
@@ -58,7 +59,7 @@ export const {
       marginLeft: value,
       marginRight: value,
     }),
-    textStyle: (value: string) => getStitchesTextStyle(value),
+    textStyle: (value: TypographicStyleString) => getStitchesTextStyle(value),
   },
 });
 
