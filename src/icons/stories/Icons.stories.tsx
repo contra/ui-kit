@@ -1,5 +1,5 @@
 import * as Icons from '../.';
-import { styled } from '../../../stitches.config';
+import { styled } from '../../theme';
 
 const IconsWrapper = styled('div', {
   display: 'flex',
