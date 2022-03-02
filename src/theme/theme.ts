@@ -5,6 +5,7 @@ import { fonts, fontCssVariables } from './fonts';
 import { mediaQueries } from './mediaQueries';
 import type { CSSVariables } from './types';
 
+/** This theme is for backwards compatibility with our old styled-system, styled-components setup in CWA */
 const theme = {
   breakpoints,
   colors,

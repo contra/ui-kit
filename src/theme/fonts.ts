@@ -1,6 +1,6 @@
 import { fontStack, generateThemeScaleCssVariables } from './utils';
 
-const fontStacks = {
+export const fontStacks = {
   body: fontStack([
     'Inter',
     '-apple-system',
