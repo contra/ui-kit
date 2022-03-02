@@ -1,26 +1,26 @@
-import * as Icons from '../.';
-import { styled } from '../../../stitches.config';
+import * as Icons from '../icons';
+import { styled } from '../stitches.config';
 
 const IconsWrapper = styled('div', {
   display: 'flex',
-  width: '100%',
   flexFlow: 'row wrap',
+  width: '100%',
 });
 
 const IconContainer = styled('div', {
-  display: 'flex',
-  flexFlow: 'column',
-  alignItems: 'center',
-  fontSize: '1rem',
-  color: '$brandBlack',
-  backgroundColor: '$brandWhite',
-  borderRadius: '20px',
-  padding: '$16',
-  margin: '$24',
-  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.16)',
   '& > *': {
     marginBottom: '8px',
   },
+  alignItems: 'center',
+  backgroundColor: '$brandWhite',
+  borderRadius: '20px',
+  boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.16)',
+  color: '$brandBlack',
+  display: 'flex',
+  flexFlow: 'column',
+  fontSize: '1rem',
+  margin: '$24',
+  padding: '$16',
 });
 
 export const AllIcons = () => (
@@ -37,6 +37,6 @@ export const AllIcons = () => (
 );
 
 export default {
-  title: 'Icons',
   component: AllIcons,
+  title: 'Icons',
 };
