@@ -4,5 +4,10 @@
     "noEmit": false,
     "outDir": "dist/esm"
   },
-  "exclude": ["src/**/__tests__/*", "src/**/*.test.*"]
+  "exclude": [
+    "node_modules",
+    "src/**/__tests__/*",
+    "src/**/*.test.*",
+    "src/**/*.stories.*"
+  ]
 }

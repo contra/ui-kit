@@ -1,6 +1,6 @@
 import type * as Stitches from '@stitches/react';
 import { createStitches } from '@stitches/react';
-import { colorPrimitives } from './src/primitives/colorPrimitives';
+import { colorPrimitives } from './primitives/colorPrimitives';
 
 export const {
   styled,
