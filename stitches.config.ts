@@ -14,7 +14,16 @@ export const {
 } = createStitches({
   media: {},
   theme: {
+    borderStyles: {
+      solid: 'solid',
+    },
+    borderWidths: {
+      thin: '2px',
+    },
     colors: colorPrimitives,
+    radii: {
+      4: '4px',
+    },
     space: {
       4: '4px',
       8: '8px',
