@@ -13,7 +13,7 @@ import {
 } from './utils/figma';
 
 const ACCESS_TOKEN = process.env['FIGMA_ACCESS_TOKEN'] ?? '';
-const TEAM_ID = '752659572481085163';
+const TEAM_ID = '1078370320081672277';
 const FILE_ID = 'owwo3mjL0dCKJijKGaf1XB';
 const OUTPUT_DIR = '../../src/primitives/';
 const FILE_NAME = 'textStyles.ts';
