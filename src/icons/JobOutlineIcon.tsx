@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-export const JobIcon = (props: SVGProps<SVGSVGElement>) => (
+export const JobOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"

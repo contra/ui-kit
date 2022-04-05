@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-export const SendIcon = (props: SVGProps<SVGSVGElement>) => (
+export const MailSendOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"

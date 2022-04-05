@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-export const CreditCardIcon = (props: SVGProps<SVGSVGElement>) => (
+export const CreditCardOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"
