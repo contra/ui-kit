@@ -3210,13 +3210,13 @@
     "@svgr/hast-util-to-babel-ast" "^5.5.0"
     svg-parser "^2.0.2"
 
-"@svgr/plugin-prettier@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@svgr/plugin-prettier/-/plugin-prettier-5.5.0.tgz#6c5cc8100f0c895f356d24d523f6ea5165b75366"
-  integrity sha512-mVc+u+eKUmy8sW5UnFpes9NqVtizJfnhasF8Srbi3XdxVTWyU5lmhWlQAgHLhcrsZKowQ0b7xBa4qWHI5Ew/VQ==
+"@svgr/plugin-prettier@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@svgr/plugin-prettier/-/plugin-prettier-6.1.2.tgz#e87eab379b96a6414ddfb9555754e35e64798a90"
+  integrity sha512-jd9+Arj+6wsv8XxbE2VxfXGftibV+QIH+Uzl4Y0JZ+j5jgJsbCd+7Yey7ZBgVRe7xaW0aRwshUAmP6axOAl37A==
   dependencies:
     deepmerge "^4.2.2"
-    prettier "^2.1.2"
+    prettier "^2.4.0"
 
 "@svgr/plugin-svgo@^5.5.0":
   version "5.5.0"
@@ -12249,10 +12249,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@^2.1.2:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
-  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
+prettier@^2.4.0:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 prettier@^2.4.1:
   version "2.4.1"
