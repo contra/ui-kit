@@ -10,15 +10,18 @@ export const Info16pxIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <path
-      d="M8.667 5.333a.667.667 0 11-1.334 0 .667.667 0 011.334 0zM7.5 7.333v4h1v-4h-1z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-8 7A7 7 0 108 1a7 7 0 000 14z"
-      fill="currentColor"
-    />
+    <g clipPath="url(#prefix__clip0_39_15446)" fill="currentColor">
+      <path d="M8.667 5.333a.667.667 0 11-1.334 0 .667.667 0 011.334 0zM7.5 7.333v4h1v-4h-1z" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-8 7A7 7 0 108 1a7 7 0 000 14z"
+      />
+    </g>
+    <defs>
+      <clipPath id="prefix__clip0_39_15446">
+        <path fill="#fff" d="M0 0h16v16H0z" />
+      </clipPath>
+    </defs>
   </svg>
 );
