@@ -12,7 +12,7 @@ export const Close16pxIcon = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M13.687 3.02L8.707 8l4.98 4.98-.707.707L8 8.707l-4.98 4.98-.707-.707L7.293 8l-4.98-4.98.708-.707L8 7.293l4.98-4.98.706.707z"
-      fill="currentColor"
+      fill="#000"
     />
   </svg>
 );

@@ -11,8 +11,13 @@ export const SocialNotionIcon = (props: SVGProps<SVGSVGElement>) => (
     role="img"
     {...props}
   >
-    <path fill="url(#prefix__pattern0)" d="M0 0h24v24H0z" />
+    <g clipPath="url(#prefix__clip0_493_8210)">
+      <path fill="url(#prefix__pattern0)" d="M0 0h24v24H0z" />
+    </g>
     <defs>
+      <clipPath id="prefix__clip0_493_8210">
+        <path fill="#fff" d="M0 0h24v24H0z" />
+      </clipPath>
       <pattern
         id="prefix__pattern0"
         patternContentUnits="objectBoundingBox"

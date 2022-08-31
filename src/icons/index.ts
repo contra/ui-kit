@@ -1,4 +1,4 @@
-// Generated at Tue, 05 Apr 2022 22:33:12 GMT
+// Generated at Wed, 31 Aug 2022 15:49:30 GMT
 export { Add16pxIcon } from './Add16pxIcon';
 export { Administrative16pxIcon } from './Administrative16pxIcon';
 export { AlertCircle16pxIcon } from './AlertCircle16pxIcon';
@@ -40,10 +40,12 @@ export { CryptoOutline16pxIcon } from './CryptoOutline16pxIcon';
 export { CryptoSolid16pxIcon } from './CryptoSolid16pxIcon';
 export { Data16pxIcon } from './Data16pxIcon';
 export { Design16pxIcon } from './Design16pxIcon';
+export { Divider16pxIcon } from './Divider16pxIcon';
 export { DollarSign16pxIcon } from './DollarSign16pxIcon';
 export { Download16pxIcon } from './Download16pxIcon';
 export { Edit16pxIcon } from './Edit16pxIcon';
 export { EditAlt16pxIcon } from './EditAlt16pxIcon';
+export { Embed16pxIcon } from './Embed16pxIcon';
 export { Emoji16pxIcon } from './Emoji16pxIcon';
 export { EmojiAdd16pxIcon } from './EmojiAdd16pxIcon';
 export { Expand16pxIcon } from './Expand16pxIcon';
@@ -186,10 +188,12 @@ export { CryptoOutlineIcon } from './CryptoOutlineIcon';
 export { CryptoSolidIcon } from './CryptoSolidIcon';
 export { DataIcon } from './DataIcon';
 export { DesignIcon } from './DesignIcon';
+export { DividerIcon } from './DividerIcon';
 export { DollarSignIcon } from './DollarSignIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { EditIcon } from './EditIcon';
 export { EditAltIcon } from './EditAltIcon';
+export { EmbedIcon } from './EmbedIcon';
 export { EmojiIcon } from './EmojiIcon';
 export { EmojiAddIcon } from './EmojiAddIcon';
 export { ExpandIcon } from './ExpandIcon';
