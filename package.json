@@ -28,7 +28,7 @@
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:cjs": "node ./bin/build-cjs.js",
-    "build:esm": "yarn tsc --project tsconfig.build.json && tsc-esm-fix --tsconfig ./tsconfig.build.json --ext=.mjs",
+    "build:esm": "yarn tsc --project tsconfig.build.json && tsc-esm-fix --tsconfig ./tsconfig.build.json --ext=.mjs && sed -i '' 's/jsx-runtime\\.js/jsx-runtime/g' dist/esm/**/*.mjs",
     "build:storybook": "build-storybook",
     "check:package": "yarn package-check",
     "check:tsc": "yarn tsc --noEmit",
