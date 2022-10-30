@@ -6849,7 +6849,7 @@ eslint-ast-utils@^1.0.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-canonical@^30.0.0:
+eslint-config-canonical@^30.1.0:
   version "30.1.0"
   resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-30.1.0.tgz#5f1c992df83d43ecc3721d3290b0af44ab0b97c6"
   integrity sha512-P43zXpU00gYgjlwGW4zZb8bqM+QaQgmg5zj8YoYRRAI/Ud0BnZD0MdZXFJtUHdIuRfL37pJ6JCMBQxLaaEh76g==
