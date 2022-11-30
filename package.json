@@ -55,7 +55,7 @@
     "@svgr/plugin-svgo": "^5.5.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.0.2",
-    "@types/lodash": "^4.14.176",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^16.11.7",
     "@types/prettier": "^2.4.2",
     "@types/react": "^17.0.34",
